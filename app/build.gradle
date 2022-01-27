@@ -6,7 +6,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.pkasemer.zodongofoods"
+        applicationId "com.pkasemer.MyFamlinkApp"
         minSdk 21
         targetSdk 31
         versionCode 1

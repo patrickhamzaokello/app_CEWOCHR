@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.pkasemer.zodongofoods">
+    package="com.pkasemer.MyFamlinkApp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,27 +17,27 @@
         android:theme="@style/Theme.ZodongoFoods"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name=".PlaceOrder"></activity>
+        <activity android:name="com.pkasemer.MyFamlinkApp.PlaceOrder"></activity>
         <activity
-            android:name=".MyMenuDetail"
+            android:name="com.pkasemer.MyFamlinkApp.MyMenuDetail"
             android:exported="true" />
         <activity
-            android:name=".MySelectedCategory"
+            android:name="com.pkasemer.MyFamlinkApp.MySelectedCategory"
             android:exported="true" />
         <activity
-            android:name=".RootActivity"
+            android:name="com.pkasemer.MyFamlinkApp.RootActivity"
             android:exported="true" />
         <activity
-            android:name=".RegisterMaterial"
+            android:name="com.pkasemer.MyFamlinkApp.RegisterMaterial"
             android:exported="true" />
         <activity
-            android:name=".LoginMaterial"
+            android:name="com.pkasemer.MyFamlinkApp.LoginMaterial"
             android:exported="true" />
         <activity
-            android:name=".OnBoarding"
+            android:name="com.pkasemer.MyFamlinkApp.OnBoarding"
             android:exported="true" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.pkasemer.MyFamlinkApp.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
