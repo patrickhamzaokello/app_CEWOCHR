@@ -34,4 +34,5 @@
 
     <string name="cartcoutAction">cartmsg</string>
     <string name="cartCount">cartcount</string>
+    <string name="Message">Message</string>
 </resources>

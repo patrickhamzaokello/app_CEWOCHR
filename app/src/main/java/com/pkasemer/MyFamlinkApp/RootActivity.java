@@ -44,13 +44,13 @@ public class RootActivity extends AppCompatActivity {
 
         //Pass the ID's of Different destinations
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_search, R.id.navigation_cart, R.id.navigation_profile )
+                R.id.navigation_home, R.id.navigation_search, R.id.navigation_message, R.id.navigation_profile )
                 .build();
 
         //Initialize NavController.
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navView, navController);
-        navView.getOrCreateBadge(R.id.navigation_cart).setBackgroundColor(getResources().getColor(R.color.sweetRed));
+        navView.getOrCreateBadge(R.id.navigation_message).setBackgroundColor(getResources().getColor(R.color.sweetRed));
 
         //updating cart counts
         updatecartCount();
@@ -72,12 +72,12 @@ public class RootActivity extends AppCompatActivity {
             String cartcount=intent.getStringExtra(getString(R.string.cartCount));
 
             if((Integer.parseInt(cartcount)) != 0){
-                navView.getOrCreateBadge(R.id.navigation_cart).setNumber(Integer.parseInt(cartcount));
-                navView.getOrCreateBadge(R.id.navigation_cart).setVisible(true);
+                navView.getOrCreateBadge(R.id.navigation_message).setNumber(Integer.parseInt(cartcount));
+                navView.getOrCreateBadge(R.id.navigation_message).setVisible(true);
 
             }else {
-                navView.getOrCreateBadge(R.id.navigation_cart).clearNumber();
-                navView.getOrCreateBadge(R.id.navigation_cart).setVisible(false);
+                navView.getOrCreateBadge(R.id.navigation_message).clearNumber();
+                navView.getOrCreateBadge(R.id.navigation_message).setVisible(false);
 
             }
         }
@@ -86,12 +86,12 @@ public class RootActivity extends AppCompatActivity {
     private void updatecartCount() {
         int mycartcount = db.countCart();
         if(mycartcount != 0){
-            navView.getOrCreateBadge(R.id.navigation_cart).setNumber(mycartcount);
-            navView.getOrCreateBadge(R.id.navigation_cart).setVisible(true);
+            navView.getOrCreateBadge(R.id.navigation_message).setNumber(mycartcount);
+            navView.getOrCreateBadge(R.id.navigation_message).setVisible(true);
 
         }else {
-            navView.getOrCreateBadge(R.id.navigation_cart).clearNumber();
-            navView.getOrCreateBadge(R.id.navigation_cart).setVisible(false);
+            navView.getOrCreateBadge(R.id.navigation_message).clearNumber();
+            navView.getOrCreateBadge(R.id.navigation_message).setVisible(false);
         }
     }
 

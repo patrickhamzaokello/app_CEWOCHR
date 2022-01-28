@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#0D0D0D</color>
+    <color name="purple_200">#2F3A70</color>
+    <color name="bluble">#2F3A70</color>
     <color name="purple_500">#0D0D0D</color>
     <color name="purple_700">#000000</color>
     <color name="teal_200">#0D0D0D</color>
@@ -9,7 +10,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="rootbg">#F2F2F2</color>
+    <color name="rootbg">#EEEEEE</color>
 
     <color name="shimmer_color">#366C6C6C</color>
     <color name="light_grey">#A6A6A6</color>

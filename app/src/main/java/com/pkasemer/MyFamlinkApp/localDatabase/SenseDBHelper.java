@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.pkasemer.MyFamlinkApp.Models.FoodDBModel;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +15,6 @@ public class SenseDBHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 2;
     private static final String DB_TABLE = "CART";
 
-    List<FoodDBModel> foodDBModelList;
 
     public SenseDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -123,35 +120,35 @@ public class SenseDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<FoodDBModel> listTweetsBD() {
-        String sql = "select * from " + DB_TABLE + " order by _id DESC";
-        SQLiteDatabase db = this.getReadableDatabase();
-        foodDBModelList = new ArrayList<>();
-        Cursor cursor = db.rawQuery(sql, null);
-        if (cursor.moveToFirst()) {
-            do {
-                int id = Integer.parseInt(cursor.getString(0));
-                int menuId = Integer.parseInt(cursor.getString(1));
-                String menuname = cursor.getString(2);
-                int price = Integer.parseInt(cursor.getString(3));
-                String description = cursor.getString(4);
-                int menutypid = Integer.parseInt(cursor.getString(5));
-                String menuimage = cursor.getString(6);
-                String backgroundimage = cursor.getString(7);
-                String ingredients = cursor.getString(8);
-                int menuStatus = Integer.parseInt(cursor.getString(9));
-                String created = cursor.getString(10);
-                String modified = cursor.getString(11);
-                int rating = Integer.parseInt(cursor.getString(12));
-                int quantity = Integer.parseInt(cursor.getString(13));
-
-                foodDBModelList.add(new FoodDBModel(menuId, menuname, price,description, menutypid, menuimage,backgroundimage, ingredients,menuStatus, created,modified, rating,quantity));
-            }
-            while (cursor.moveToNext());
-        }
-        cursor.close();
-        return foodDBModelList;
-    }
+//    public List<FoodDBModel> listTweetsBD() {
+//        String sql = "select * from " + DB_TABLE + " order by _id DESC";
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        foodDBModelList = new ArrayList<>();
+//        Cursor cursor = db.rawQuery(sql, null);
+//        if (cursor.moveToFirst()) {
+//            do {
+//                int id = Integer.parseInt(cursor.getString(0));
+//                int menuId = Integer.parseInt(cursor.getString(1));
+//                String menuname = cursor.getString(2);
+//                int price = Integer.parseInt(cursor.getString(3));
+//                String description = cursor.getString(4);
+//                int menutypid = Integer.parseInt(cursor.getString(5));
+//                String menuimage = cursor.getString(6);
+//                String backgroundimage = cursor.getString(7);
+//                String ingredients = cursor.getString(8);
+//                int menuStatus = Integer.parseInt(cursor.getString(9));
+//                String created = cursor.getString(10);
+//                String modified = cursor.getString(11);
+//                int rating = Integer.parseInt(cursor.getString(12));
+//                int quantity = Integer.parseInt(cursor.getString(13));
+//
+//                foodDBModelList.add(new FoodDBModel(menuId, menuname, price,description, menutypid, menuimage,backgroundimage, ingredients,menuStatus, created,modified, rating,quantity));
+//            }
+//            while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        return foodDBModelList;
+//    }
 
     public void addTweet(
             int menuId,
@@ -186,13 +183,7 @@ public class SenseDBHelper extends SQLiteOpenHelper {
         db.insert(DB_TABLE, null, values);
     }
 
-    void updateTweet(FoodDBModel foodmenu) {
-        ContentValues values = new ContentValues();
-        values.put("menuName", foodmenu.getMenuName());
-        values.put("description", foodmenu.getDescription());
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.update(DB_TABLE, values, "menuId" + " = ?", new String[]{String.valueOf(foodmenu.getMenuId())});
-    }
+
 
    public void updateMenuCount(Integer qtn, Integer menuID) {
         ContentValues values = new ContentValues();

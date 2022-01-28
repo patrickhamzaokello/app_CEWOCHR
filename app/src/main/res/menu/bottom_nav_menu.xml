@@ -3,23 +3,23 @@
     <item
         android:id="@+id/navigation_home"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_home_24"
+        android:icon="@drawable/ic_homeicon"
         android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_search"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_search_24"
+        android:icon="@drawable/ic_searchbtn"
         android:title="@string/title_search" />
     <item
-        android:id="@+id/navigation_cart"
+        android:id="@+id/navigation_message"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:title="@string/title_Cart" />
+        android:icon="@drawable/ic_messagenew"
+        android:title="@string/Message" />
     <item
         android:id="@+id/navigation_profile"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_person_pin_24"
+        android:icon="@drawable/ic_account"
         android:title="@string/title_profile" />
 
 

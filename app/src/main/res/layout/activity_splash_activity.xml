@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".SplashActivity">
+    android:orientation="vertical"
+    tools:context=".SplashActivity"
+    android:layout_centerVertical="true"
+    android:gravity="center_vertical"
+    >
 
 
     <ImageView
@@ -13,9 +17,10 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:gravity="center"
+        android:layout_marginHorizontal="20dp"
         android:transitionName="logo_image"
         app:layout_constraintTop_toBottomOf="@+id/guideline2"
-        app:srcCompat="@drawable/firstimage"
+        app:srcCompat="@drawable/blackfamily4"
 
         />
 
@@ -27,14 +32,14 @@
         android:layout_marginEnd="10dp"
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
-        android:text="Zodongo Foods"
+        android:text="CEWOCHR"
         android:textColor="@color/purple_200"
         android:textSize="34sp"
         android:transitionName="logo_text"
         app:layout_constraintBottom_toTopOf="@+id/splashtextdesc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splashimage" />
+        app:layout_constraintTop_toBottomOf="@+id/splashimage"></TextView>
 
     <TextView
         android:id="@+id/splashtextdesc"
@@ -43,14 +48,15 @@
         android:fontFamily="@font/montserrat"
         android:gravity="center"
         android:paddingHorizontal="20dp"
-        android:text="The Best Place in Town for Food, You Order We Deliver"
+        android:text="Centre for Women and Children's Reintegration "
         android:textAlignment="center"
         android:textColor="@color/purple_500"
         android:textSize="18sp"
         android:transitionName="logo_desc"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splashimage" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -68,7 +74,7 @@
         app:layout_constraintGuide_percent="0.2" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
 
 

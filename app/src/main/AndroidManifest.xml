@@ -17,27 +17,33 @@
         android:theme="@style/Theme.ZodongoFoods"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name="com.pkasemer.MyFamlinkApp.PlaceOrder"></activity>
+        <receiver
+            android:name=".Utils.NetworkStateChecker"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
         <activity
-            android:name="com.pkasemer.MyFamlinkApp.MyMenuDetail"
+            android:name=".ReportChild"
+            android:exported="true"
+            ></activity>
+        <activity
+            android:name=".RootActivity"
             android:exported="true" />
         <activity
-            android:name="com.pkasemer.MyFamlinkApp.MySelectedCategory"
+            android:name=".RegisterMaterial"
             android:exported="true" />
         <activity
-            android:name="com.pkasemer.MyFamlinkApp.RootActivity"
+            android:name=".LoginMaterial"
             android:exported="true" />
         <activity
-            android:name="com.pkasemer.MyFamlinkApp.RegisterMaterial"
+            android:name=".OnBoarding"
             android:exported="true" />
         <activity
-            android:name="com.pkasemer.MyFamlinkApp.LoginMaterial"
-            android:exported="true" />
-        <activity
-            android:name="com.pkasemer.MyFamlinkApp.OnBoarding"
-            android:exported="true" />
-        <activity
-            android:name="com.pkasemer.MyFamlinkApp.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

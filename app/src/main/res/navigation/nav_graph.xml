@@ -14,10 +14,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_cart"
-        android:name="com.pkasemer.MyFamlinkApp.Fragments.Cart"
-        android:label="@string/title_Cart"
-        tools:layout="@layout/fragment_cart" />
+        android:id="@+id/navigation_message"
+        android:name="com.pkasemer.MyFamlinkApp.Fragments.Message"
+        android:label="@string/Message"
+        tools:layout="@layout/fragment_message" />
 
     <fragment
         android:id="@+id/navigation_search"

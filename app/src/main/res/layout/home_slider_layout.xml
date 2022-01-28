@@ -13,7 +13,7 @@ android:clipToPadding="false">
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="11dp">
 
         <ImageView
             android:id="@+id/myimage"
