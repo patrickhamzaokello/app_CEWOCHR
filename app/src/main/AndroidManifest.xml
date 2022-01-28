@@ -17,10 +17,13 @@
         android:theme="@style/Theme.ZodongoFoods"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
+        <activity android:name=".FindFamily"></activity>
+        <activity android:name=".AddFamily" />
+        <activity android:name=".AllReports" />
+
         <receiver
             android:name=".Utils.NetworkStateChecker"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
@@ -28,8 +31,7 @@
 
         <activity
             android:name=".ReportChild"
-            android:exported="true"
-            ></activity>
+            android:exported="true" />
         <activity
             android:name=".RootActivity"
             android:exported="true" />

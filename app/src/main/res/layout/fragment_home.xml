@@ -170,7 +170,7 @@
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="11dp"
-
+                android:id="@+id/findFamily"
                 >
 
                 <RelativeLayout
@@ -237,7 +237,7 @@
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="11dp"
-
+                android:id="@+id/addFamily"
                 >
 
                 <RelativeLayout
@@ -293,6 +293,7 @@
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="11dp"
+                android:id="@+id/allReports"
 
                 >
 

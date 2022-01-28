@@ -12,8 +12,11 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.pkasemer.MyFamlinkApp.Adapters.HomeSliderAdapter;
+import com.pkasemer.MyFamlinkApp.AddFamily;
+import com.pkasemer.MyFamlinkApp.AllReports;
 import com.pkasemer.MyFamlinkApp.Apis.MovieApi;
 import com.pkasemer.MyFamlinkApp.Apis.MovieService;
+import com.pkasemer.MyFamlinkApp.FindFamily;
 import com.pkasemer.MyFamlinkApp.Models.Banner;
 import com.pkasemer.MyFamlinkApp.Models.HomeBannerModel;
 import com.pkasemer.MyFamlinkApp.R;
@@ -35,7 +38,7 @@ public class Home extends Fragment  {
 
     private static final String TAG = "MainActivity";
     SliderView sliderView;
-    CardView welcome_card_layout, addChildCard;
+    CardView welcome_card_layout, addChildCard,allReports,findFamily,addFamily;
 
     List<Banner> banners;
     private MovieService movieService;
@@ -61,7 +64,9 @@ public class Home extends Fragment  {
         sliderView = view.findViewById(R.id.home_slider);
         welcome_card_layout = view.findViewById(R.id.welcome_card_layout);
         addChildCard = view.findViewById(R.id.addChildCard);
-
+        allReports = view.findViewById(R.id.allReports);
+        findFamily = view.findViewById(R.id.findFamily);
+        addFamily = view.findViewById(R.id.addFamily);
         //init service and load data
         movieService = MovieApi.getClient(getContext()).create(MovieService.class);
 
@@ -70,6 +75,28 @@ public class Home extends Fragment  {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), ReportChild.class);
+                startActivity(i);
+            }
+        });
+
+        allReports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), AllReports.class);
+                startActivity(i);
+            }
+        });
+        addFamily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), AddFamily.class);
+                startActivity(i);
+            }
+        });
+        findFamily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), FindFamily.class);
                 startActivity(i);
             }
         });

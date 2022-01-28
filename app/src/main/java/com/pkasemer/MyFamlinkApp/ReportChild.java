@@ -1,41 +1,41 @@
 package com.pkasemer.MyFamlinkApp;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 
-        import androidx.appcompat.app.AppCompatActivity;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.google.android.material.textfield.TextInputEditText;
+import com.pkasemer.MyFamlinkApp.Adapters.NameAdapter;
+import com.pkasemer.MyFamlinkApp.Models.Name;
+import com.pkasemer.MyFamlinkApp.Singletons.VolleySingleton;
+import com.pkasemer.MyFamlinkApp.Utils.NetworkStateChecker;
+import com.pkasemer.MyFamlinkApp.localDatabase.DatabaseHelper;
 
-        import android.app.ProgressDialog;
-        import android.content.BroadcastReceiver;
-        import android.content.Context;
-        import android.content.Intent;
-        import android.content.IntentFilter;
-        import android.database.Cursor;
-        import android.net.ConnectivityManager;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.ListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import com.android.volley.AuthFailureError;
-        import com.android.volley.Request;
-        import com.android.volley.Response;
-        import com.android.volley.VolleyError;
-        import com.android.volley.toolbox.StringRequest;
-        import com.pkasemer.MyFamlinkApp.Adapters.NameAdapter;
-        import com.pkasemer.MyFamlinkApp.Models.Name;
-        import com.pkasemer.MyFamlinkApp.Singletons.VolleySingleton;
-        import com.pkasemer.MyFamlinkApp.Utils.NetworkStateChecker;
-        import com.pkasemer.MyFamlinkApp.localDatabase.DatabaseHelper;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-        import org.json.JSONException;
-        import org.json.JSONObject;
-
-        import java.util.ArrayList;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Map;
-
-public class ReportChild extends  AppCompatActivity implements View.OnClickListener {
+public class ReportChild extends AppCompatActivity implements View.OnClickListener {
 
     /*
      * this is the url to our webservice
@@ -68,18 +68,27 @@ public class ReportChild extends  AppCompatActivity implements View.OnClickListe
 
     //adapterobject for list view
     private NameAdapter nameAdapter;
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_child);
+
+        actionBar = getSupportActionBar(); // or getActionBar();
+        actionBar.setTitle("Report Child");
+        // add back arrow to toolbar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         //initializing views and objects
         db = new DatabaseHelper(this);
         names = new ArrayList<>();
 
         buttonSave = (Button) findViewById(R.id.buttonSave);
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextDescription = (EditText) findViewById(R.id.editTextDescription);
+        editTextName = (TextInputEditText) findViewById(R.id.editTextName);
+        editTextDescription = (TextInputEditText) findViewById(R.id.editTextDescription);
         listViewNames = (ListView) findViewById(R.id.listViewNames);
 
         //adding click listener to button
@@ -155,11 +164,11 @@ public class ReportChild extends  AppCompatActivity implements View.OnClickListe
                             if (!obj.getBoolean("error")) {
                                 //if there is a success
                                 //storing the name to sqlite with status synced
-                                saveNameToLocalStorage(name,description,NAME_SYNCED_WITH_SERVER);
+                                saveNameToLocalStorage(name, description, NAME_SYNCED_WITH_SERVER);
                             } else {
                                 //if there is some error
                                 //saving the name to sqlite with status unsynced
-                                saveNameToLocalStorage(name,description, NAME_NOT_SYNCED_WITH_SERVER);
+                                saveNameToLocalStorage(name, description, NAME_NOT_SYNCED_WITH_SERVER);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -171,14 +180,14 @@ public class ReportChild extends  AppCompatActivity implements View.OnClickListe
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
                         //on error storing the name to sqlite with status unsynced
-                        saveNameToLocalStorage(name,description, NAME_NOT_SYNCED_WITH_SERVER);
+                        saveNameToLocalStorage(name, description, NAME_NOT_SYNCED_WITH_SERVER);
                     }
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("name", name);
-                params.put("description",description);
+                params.put("description", description);
                 return params;
             }
         };
@@ -190,8 +199,8 @@ public class ReportChild extends  AppCompatActivity implements View.OnClickListe
     private void saveNameToLocalStorage(String name, String description, int status) {
         editTextName.setText("");
         editTextDescription.setText("");
-        db.addName(name,description, status);
-        Name n = new Name(name,description,status);
+        db.addName(name, description, status);
+        Name n = new Name(name, description, status);
         names.add(n);
         refreshList();
     }
@@ -200,4 +209,11 @@ public class ReportChild extends  AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         saveNameToServer();
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }
