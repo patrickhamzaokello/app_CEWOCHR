@@ -2,6 +2,7 @@ package com.pkasemer.MyFamlinkApp;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -123,7 +126,7 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
         Cursor cursor = db.getNames();
         if (cursor.moveToFirst()) {
             do {
-                Name name = new Name(
+                @SuppressLint("Range") Name name = new Name(
                         cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NAME)),
                         cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_DESCRIPTION)),
                         cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COLUMN_STATUS))
@@ -216,4 +219,25 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
         return true;
     }
 
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.maleRadio:
+                if (checked)
+                    // male clicked
+
+                    Toast.makeText(this, "male clicked", Toast.LENGTH_SHORT).show();
+
+                    break;
+            case R.id.femaleRadio:
+                if (checked)
+                    // female clicked
+                    Toast.makeText(this, "fe-male clicked", Toast.LENGTH_SHORT).show();
+
+                break;
+        }
+    }
 }

@@ -58,6 +58,7 @@
             android:layout_toRightOf="@+id/cart_product_image_layout"
             android:orientation="vertical"
             android:layout_toLeftOf="@id/imageViewStatus"
+            android:id="@+id/carddetailscard"
             android:padding="10dp"
 
             >
@@ -178,6 +179,18 @@
             android:id="@+id/imageViewStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnCartItemRemove"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/imageViewStatus"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@+id/carddetailscard"
+            android:background="@drawable/custom_btn_close"
+            android:theme="@style/BlackBtn" />
 
     </RelativeLayout>
 

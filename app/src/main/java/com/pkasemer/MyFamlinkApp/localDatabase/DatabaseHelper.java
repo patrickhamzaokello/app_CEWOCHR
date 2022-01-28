@@ -7,6 +7,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.pkasemer.MyFamlinkApp.Models.Name;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Belal on 1/27/2017.
  */
@@ -22,6 +27,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //database version
     private static final int DB_VERSION = 2;
+
+    List<Name> nameList;
 
     //Constructor
     public DatabaseHelper(Context context) {
@@ -104,4 +111,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = db.rawQuery(sql, null);
         return c;
     }
+
+
+    public List<Name> listDBNames() {
+        String sql = "select * from " + TABLE_NAME + " order by "+ COLUMN_ID + " DESC ";
+        SQLiteDatabase db = this.getReadableDatabase();
+        nameList = new ArrayList<>();
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(1);
+                String description = cursor.getString(2);
+                int status = Integer.parseInt(cursor.getString(3));
+                nameList.add(new Name(name, description, status));
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        return nameList;
+    }
+
+    public void deleteReport(String id_str) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{id_str});
+    }
+
+    public int countRecords(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor mCount= db.rawQuery("select count(*) from " +TABLE_NAME , null);
+        mCount.moveToFirst();
+        int count= mCount.getInt(0);
+        mCount.close();
+
+        return count;
+    }
+
+
 }

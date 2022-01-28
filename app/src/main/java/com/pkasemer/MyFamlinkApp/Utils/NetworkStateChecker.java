@@ -1,5 +1,6 @@
 package com.pkasemer.MyFamlinkApp.Utils;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
     private DatabaseHelper db;
 
 
+    @SuppressLint("Range")
     @Override
     public void onReceive(Context context, Intent intent) {
 

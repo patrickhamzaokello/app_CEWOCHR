@@ -20,7 +20,7 @@
             android:id="@+id/loginlogo"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/chefone"
+            android:src="@drawable/blackfamily4"
             android:transitionName="logo_image" />
 
         <TextView

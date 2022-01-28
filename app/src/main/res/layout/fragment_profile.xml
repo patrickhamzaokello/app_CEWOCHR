@@ -76,7 +76,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="@color/teal_700"
+                app:cardBackgroundColor="#475494"
 
                 >
 
@@ -98,7 +98,7 @@
                         android:layout_centerInParent="true"
                         android:fontFamily="sans-serif-black"
                         android:includeFontPadding="false"
-                        android:text="20,400"
+                        android:text="21"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -111,7 +111,7 @@
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/montserrat"
                         android:includeFontPadding="false"
-                        android:text="Wallet"
+                        android:text="Reports"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -125,7 +125,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="@color/teal_700"
+                app:cardBackgroundColor="#475494"
 
                 >
 
@@ -147,7 +147,7 @@
                         android:layout_centerInParent="true"
                         android:fontFamily="sans-serif-black"
                         android:includeFontPadding="false"
-                        android:text="20,400"
+                        android:text="5"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -160,7 +160,7 @@
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/montserrat"
                         android:includeFontPadding="false"
-                        android:text="Wallet"
+                        android:text="Messages"
                         android:textColor="@color/white"
 
                         android:textSize="14sp" />

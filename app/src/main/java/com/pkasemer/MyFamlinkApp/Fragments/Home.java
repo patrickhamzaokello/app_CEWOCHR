@@ -75,6 +75,8 @@ public class Home extends Fragment  {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), ReportChild.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 startActivity(i);
             }
         });
@@ -83,6 +85,8 @@ public class Home extends Fragment  {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), AllReports.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 startActivity(i);
             }
         });
@@ -90,6 +94,8 @@ public class Home extends Fragment  {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), AddFamily.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 startActivity(i);
             }
         });
@@ -97,6 +103,7 @@ public class Home extends Fragment  {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), FindFamily.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
             }
         });
