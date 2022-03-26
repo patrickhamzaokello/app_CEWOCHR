@@ -30,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Home extends Fragment  {
+public class Home extends Fragment {
 
     public Home() {
         // Required empty public constructor
@@ -38,12 +38,10 @@ public class Home extends Fragment  {
 
     private static final String TAG = "MainActivity";
     SliderView sliderView;
-    CardView welcome_card_layout, addChildCard,allReports,findFamily,addFamily;
+    CardView welcome_card_layout, addChildCard, allReports, findFamily, addFamily;
 
     List<Banner> banners;
     private MovieService movieService;
-
-
 
 
     @Override
@@ -107,110 +105,17 @@ public class Home extends Fragment  {
                 startActivity(i);
             }
         });
-        
 
 
         return view;
     }
 
 
-
     @Override
     public void onResume() {
         super.onResume();
-        loadFirstPage();
 
     }
-
-
-
-    private void loadFirstPage() {
-
-        class LoadFirstPage extends AsyncTask<Void, Void, String> {
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                homeslider();
-            }
-
-            @Override
-            protected String doInBackground(Void... voids) {
-                return "done";
-            }
-        }
-
-        LoadFirstPage ulLoadFirstPage = new LoadFirstPage();
-        ulLoadFirstPage.execute();
-    }
-
-
-
-    public void homeslider() {
-
-        callGetHomeBanners().enqueue(new Callback<HomeBannerModel>() {
-            @Override
-            public void onResponse(Call<HomeBannerModel> call, Response<HomeBannerModel> response) {
-                // Got data. Send it to adapter
-                banners = fetchBannerResults(response);
-                if (banners.isEmpty()) {
-                    return;
-                } else {
-                    // initializing the slider view.
-                    sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
-                    sliderView.setScrollTimeInSec(3);
-                    sliderView.setAutoCycle(true);
-                    sliderView.startAutoCycle();
-                    // passing this array list inside our adapter class.
-                    HomeSliderAdapter adapter = new HomeSliderAdapter(getContext(), banners);
-                    sliderView.setSliderAdapter(adapter);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<HomeBannerModel> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
-
-    }
-
-
-
-
-    private List<Banner> fetchBannerResults(Response<HomeBannerModel> response) {
-        HomeBannerModel homeBannerModel = response.body();
-        int TOTAL_PAGES = homeBannerModel.getTotalPages();
-        System.out.println("total pages banners" + TOTAL_PAGES);
-        return homeBannerModel.getBanners();
-    }
-
-
-    /**
-     * Performs a Retrofit call to the callGetMenuCategoriesApi API.
-     * Same API call for Pagination.
-     */
-    private Call<HomeBannerModel> callGetHomeBanners() {
-        return movieService.getHomeBanners();
-    }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

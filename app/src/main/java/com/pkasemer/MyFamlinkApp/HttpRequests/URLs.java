@@ -5,9 +5,10 @@ package com.pkasemer.MyFamlinkApp.HttpRequests;
 
 public class URLs {
 
-    private static final String ROOT_URL = "http://pk.kakebe.com/ZodongoFoods/Api.php?apicall=";
-//    private static final String ROOT_URL = "http://192.168.0.101:8080/ZodongoFoods/Api.php?apicall=";
-    public static final String URL_REGISTER = ROOT_URL + "signup";
-    public static final String URL_LOGIN= ROOT_URL + "login";
+    private static final String ROOT_URL = "http://192.168.88.252:8080/projects/myfamLinkApp/mobile/api/v1/";
+    public static final String URL_REGISTER = ROOT_URL + "users/account?apicall=signup";
+    public static final String URL_LOGIN= ROOT_URL + "users/account.php?apicall=login";
+    public static final String URL_SAVE_NAME =  ROOT_URL + "refercase/addChild.php";
+
 
 }

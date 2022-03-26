@@ -17,10 +17,14 @@ public class SharedPrefManager {
 
     //the constants
     private static final String SHARED_PREF_NAME = "simplifiedcodingsharedpref";
+    private static final String KEY_FULLNAME = "keyfullname";
     private static final String KEY_USERNAME = "keyusername";
     private static final String KEY_EMAIL = "keyemail";
-    private static final String KEY_GENDER = "keygender";
+    private static final String KEY_PHONE = "keyphone";
+    private static final String KEY_ADDRESS = "keyaddress";
+    private static final String KEY_PROFILEIMAGE = "keyprofileimage";
     private static final String KEY_ID = "keyid";
+
 
     private static SharedPrefManager mInstance;
     private static Context mCtx;
@@ -42,9 +46,12 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(KEY_ID, userModel.getId());
+        editor.putString(KEY_FULLNAME, userModel.getFullname());
         editor.putString(KEY_USERNAME, userModel.getUsername());
         editor.putString(KEY_EMAIL, userModel.getEmail());
-        editor.putString(KEY_GENDER, userModel.getGender());
+        editor.putString(KEY_PHONE, userModel.getPhone());
+        editor.putString(KEY_ADDRESS, userModel.getAddress());
+        editor.putString(KEY_PROFILEIMAGE, userModel.getProfileimage());
         editor.apply();
     }
 
@@ -59,9 +66,12 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return new UserModel(
                 sharedPreferences.getInt(KEY_ID, -1),
+                sharedPreferences.getString(KEY_FULLNAME, null),
                 sharedPreferences.getString(KEY_USERNAME, null),
                 sharedPreferences.getString(KEY_EMAIL, null),
-                sharedPreferences.getString(KEY_GENDER, null)
+                sharedPreferences.getString(KEY_PHONE, null),
+                sharedPreferences.getString(KEY_ADDRESS, null),
+                sharedPreferences.getString(KEY_PROFILEIMAGE, null)
         );
     }
 

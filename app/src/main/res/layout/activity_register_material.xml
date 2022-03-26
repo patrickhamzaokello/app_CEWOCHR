@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/montserrat_bold"
+                android:fontFamily="@font/nunito_bold"
                 android:text="Welcome"
                 android:textColor="#000"
                 android:textSize="40sp"
@@ -37,7 +37,7 @@
                 android:id="@+id/register_subtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/nunito_regular"
                 android:includeFontPadding="false"
                 android:textColor="@color/black"
                 android:text="Create An Account to Continue"
@@ -82,7 +82,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:hint="Username"
                     app:hintTextColor="@color/black"
                     android:textColorHint="@color/black"
@@ -108,7 +108,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     app:hintTextColor="@color/black"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
@@ -130,7 +130,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     app:hintTextColor="@color/black"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
@@ -148,13 +148,36 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputTextUserAddress_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:hintTextColor="@color/black"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeErrorColor="@color/purple_500"
+                    android:hint="Location Address">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputTextUserAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+
+                        android:inputType="text" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_password"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:hint="Password"
                     app:hintTextColor="@color/black"
                     android:textColorHint="@color/black"
@@ -182,7 +205,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp"
+                    android:layout_marginVertical="10dp"
                     android:hint="Confirm Password"
                     android:transitionName="password_input"
                     app:hintTextColor="@color/black"
@@ -209,7 +232,7 @@
                     android:id="@+id/register_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="5dp"
                     android:background="#000000"
                     android:text="Register"

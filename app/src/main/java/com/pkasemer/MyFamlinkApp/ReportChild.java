@@ -1,4 +1,6 @@
 package com.pkasemer.MyFamlinkApp;
+import static com.pkasemer.MyFamlinkApp.HttpRequests.URLs.URL_SAVE_NAME;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -45,7 +47,6 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
      * make sure you are using the ip instead of localhost
      * it will not work if you are using localhost
      * */
-    public static final String URL_SAVE_NAME = "http://48c1-41-75-189-66.ngrok.io/cewochr/addChild.php";
 
     //database helper object
     private DatabaseHelper db;
@@ -54,10 +55,8 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
     private Button buttonSave;
     private EditText editTextName;
     private EditText editTextDescription;
-    private ListView listViewNames;
 
     //List to store all the names
-    private List<Name> names;
 
     //1 means data is synced and 0 means data is not synced
     public static final int NAME_SYNCED_WITH_SERVER = 1;
@@ -67,10 +66,7 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
     public static final String DATA_SAVED_BROADCAST = "net.simplifiedcoding.datasaved";
 
     //Broadcast receiver to know the sync status
-    private BroadcastReceiver broadcastReceiver;
 
-    //adapterobject for list view
-    private NameAdapter nameAdapter;
     ActionBar actionBar;
 
     @Override
@@ -87,67 +83,31 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
         }
         //initializing views and objects
         db = new DatabaseHelper(this);
-        names = new ArrayList<>();
 
         buttonSave = (Button) findViewById(R.id.buttonSave);
         editTextName = (TextInputEditText) findViewById(R.id.editTextName);
         editTextDescription = (TextInputEditText) findViewById(R.id.editTextDescription);
-        listViewNames = (ListView) findViewById(R.id.listViewNames);
 
         //adding click listener to button
         buttonSave.setOnClickListener(this);
 
-        registerReceiver(new NetworkStateChecker(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
         //calling the method to load all the stored names
-        loadNames();
 
         //the broadcast receiver to update sync status
-        broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
 
-                //loading the names again
-                loadNames();
-            }
-        };
 
         //registering the broadcast receiver to update sync status
-        registerReceiver(broadcastReceiver, new IntentFilter(DATA_SAVED_BROADCAST));
     }
 
-    /*
-     * this method will
-     * load the names from the database
-     * with updated sync status
-     * */
-    private void loadNames() {
-        names.clear();
-        Cursor cursor = db.getNames();
-        if (cursor.moveToFirst()) {
-            do {
-                @SuppressLint("Range") Name name = new Name(
-                        cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NAME)),
-                        cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_DESCRIPTION)),
-                        cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COLUMN_STATUS))
-                );
-                names.add(name);
-            } while (cursor.moveToNext());
-        }
 
-        nameAdapter = new NameAdapter(this, R.layout.names, names);
-        listViewNames.setAdapter(nameAdapter);
-    }
+
+
+
+
 
     /*
-     * this method will simply refresh the list
-     * */
-    private void refreshList() {
-        nameAdapter.notifyDataSetChanged();
-    }
-
-    /*
-     * this method is saving the name to ther server
+     * this method is saving the name to the server
      * */
     private void saveNameToServer() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -203,9 +163,6 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
         editTextName.setText("");
         editTextDescription.setText("");
         db.addName(name, description, status);
-        Name n = new Name(name, description, status);
-        names.add(n);
-        refreshList();
     }
 
     @Override

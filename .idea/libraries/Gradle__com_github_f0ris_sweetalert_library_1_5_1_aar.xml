@@ -4,12 +4,17 @@
       <root url="jar://$USER_HOME$/Library/Android/sdk/caches/transforms-3/56082108cc6684ae0eb53f330e1049ed/transformed/jetified-library-1.5.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/Library/Android/sdk/caches/transforms-3/56082108cc6684ae0eb53f330e1049ed/transformed/jetified-library-1.5.1/res" />
       <root url="file://$USER_HOME$/Library/Android/sdk/caches/transforms-3/56082108cc6684ae0eb53f330e1049ed/transformed/jetified-library-1.5.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/45543adce88db0118f3bd6650adfe09b/transformed/jetified-library-1.5.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/45543adce88db0118f3bd6650adfe09b/transformed/jetified-library-1.5.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/45543adce88db0118f3bd6650adfe09b/transformed/jetified-library-1.5.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/Library/Android/sdk/caches/modules-2/files-2.1/com.github.f0ris.sweetalert/library/1.5.1/3271b7c01b8909d776ae7bfdc36104b0d9646c57/library-1.5.1-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.f0ris.sweetalert/library/1.5.1/3271b7c01b8909d776ae7bfdc36104b0d9646c57/library-1.5.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/Library/Android/sdk/caches/modules-2/files-2.1/com.github.f0ris.sweetalert/library/1.5.1/88fd2f7eecfc597fde6e7db1a147029d89f22cfc/library-1.5.1-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.f0ris.sweetalert/library/1.5.1/88fd2f7eecfc597fde6e7db1a147029d89f22cfc/library-1.5.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

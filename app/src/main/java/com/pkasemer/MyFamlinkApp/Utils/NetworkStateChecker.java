@@ -22,6 +22,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import static com.pkasemer.MyFamlinkApp.HttpRequests.URLs.URL_SAVE_NAME;
+
 
 public class NetworkStateChecker extends BroadcastReceiver {
 
@@ -69,7 +71,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
      * we will update the status as synced in SQLite
      * */
     private void saveName(final int id, String description, final String name) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, ReportChild.URL_SAVE_NAME,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_SAVE_NAME,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

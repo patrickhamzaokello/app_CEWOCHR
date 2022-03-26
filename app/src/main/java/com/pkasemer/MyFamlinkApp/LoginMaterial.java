@@ -61,13 +61,12 @@ public class LoginMaterial extends AppCompatActivity {
         loginbtn = findViewById(R.id.login_btn);
         logoText = findViewById(R.id.login_welcomeback);
         sloganText = findViewById(R.id.login_subtext);
-        image = findViewById(R.id.loginlogo);
 
         username_layout = findViewById(R.id.login_username);
         password_layout = findViewById(R.id.login_password);
 
-        inputTextUsername = (TextInputEditText) findViewById(R.id.inputTextUsername);
-        inputTextPassword = (TextInputEditText) findViewById(R.id.inputTextPassword);
+        inputTextUsername = findViewById(R.id.inputTextUsername);
+        inputTextPassword = findViewById(R.id.inputTextPassword);
 
 
         //if user presses on login
@@ -131,7 +130,7 @@ public class LoginMaterial extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                progressBar = findViewById(R.id.progressBar);
                 progressBar.setVisibility(View.VISIBLE);
             }
 
@@ -152,7 +151,6 @@ public class LoginMaterial extends AppCompatActivity {
 
                     //if no error in response
                     if (!obj.getBoolean("error")) {
-                        showInvalidUser();
 //                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
                         //getting the user from the response
@@ -161,9 +159,12 @@ public class LoginMaterial extends AppCompatActivity {
                         //creating a new user object
                         UserModel userModel = new UserModel(
                                 userJson.getInt("id"),
+                                userJson.getString("fullname"),
                                 userJson.getString("username"),
                                 userJson.getString("email"),
-                                userJson.getString("gender")
+                                userJson.getString("phone"),
+                                userJson.getString("address"),
+                                userJson.getString("profileimage")
                         );
 
                         //storing the user in shared preferences

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/rootbg"
     android:padding="20dp"
     tools:context=".ReportChild">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,23 +21,22 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
-            android:textColorHint="@color/black"
+            android:hint="Child's Full Name"
+            android:textColorHint="@color/text_input_color"
             android:transitionName="username_input"
-            app:boxStrokeColor="@color/black"
+            app:boxStrokeColor="@color/text_input_color"
             app:boxStrokeErrorColor="@color/purple_500"
-            app:hintTextColor="@color/black">
+            app:hintTextColor="@color/text_input_color">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textColor="@color/black" />
+                android:textColor="@color/text_input_color" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -44,61 +44,157 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
             android:hint="Description"
-            android:textColorHint="@color/black"
+            android:textColorHint="@color/text_input_color"
             android:transitionName="username_input"
-            app:boxStrokeColor="@color/black"
+            app:boxStrokeColor="@color/text_input_color"
             app:boxStrokeErrorColor="@color/purple_500"
-            app:hintTextColor="@color/black">
+            app:hintTextColor="@color/text_input_color">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textColor="@color/black" />
+                android:textColor="@color/text_input_color" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:text="Gender" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/maleRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_input_color"
+
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Male" />
+                />
+
+                <RadioButton
+                    android:id="@+id/femaleRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_input_color"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Female" />
+                />
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/report_child_location"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Location"
+            android:textColorHint="@color/text_input_color"
+            android:transitionName="username_input"
+            app:boxStrokeColor="@color/text_input_color"
+            app:boxStrokeErrorColor="@color/purple_500"
+            app:hintTextColor="@color/text_input_color">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/text_input_color" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-        <RadioGroup
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/report_child_phy_des"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-            <RadioButton
-                android:id="@+id/maleRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Male"
-                android:onClick="onRadioButtonClicked"/>
-                />
+            android:layout_marginTop="10dp"
+            android:hint="Physical Description"
+            android:textColorHint="@color/text_input_color"
+            android:transitionName="username_input"
+            app:boxStrokeColor="@color/text_input_color"
+            app:boxStrokeErrorColor="@color/text_input_color"
+            app:hintTextColor="@color/text_input_color">
 
-            <RadioButton
-                android:id="@+id/femaleRadio"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextChild_phy_desc"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Female"
-                android:onClick="onRadioButtonClicked"/>
-                />
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:maxLines="10"
+                android:minLines="6"
+                android:scrollbars="vertical"
+                android:textColor="@color/text_input_color" />
 
-        </RadioGroup>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/report_child_add_info"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Additional  Information"
+            android:textColorHint="@color/text_input_color"
+            android:layout_marginTop="10dp"
+            android:transitionName="username_input"
+            app:boxStrokeColor="@color/text_input_color"
+            app:boxStrokeErrorColor="@color/text_input_color"
+            app:hintTextColor="@color/text_input_color">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextChild_add_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:maxLines="10"
+                android:minLines="6"
+                android:scrollbars="vertical"
+                android:textColor="@color/text_input_color" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/buttonSave"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Save Record" />
+
 
     </LinearLayout>
 
-    <ListView
-        android:background="@color/rootbg"
-        android:id="@+id/listViewNames"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
-</LinearLayout>
+
+</ScrollView>

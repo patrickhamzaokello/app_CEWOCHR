@@ -76,7 +76,7 @@
                     android:ellipsize="end"
                     android:maxLength="100"
                     android:maxLines="2"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/nunito_regular"
                     android:textAllCaps="true"
                     android:text="Patrick Okello"
                     android:textColor="@color/black" />
@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:alpha="0.4"
                     android:gravity="left"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/nunito_regular"
                     android:includeFontPadding="false"
                     android:maxLines="1"
                     android:text="CEWOCHR"
@@ -101,7 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/nunito_regular"
                     android:includeFontPadding="false"
                     android:maxLines="4"
                     android:layout_marginTop="10dp"
@@ -118,7 +118,7 @@
                 android:includeFontPadding="false"
                 android:maxLines="2"
                 android:textSize="12sp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/nunito_regular"
                 android:text="12 Yrs"
                 android:textColor="@color/black" />
             <TextView
@@ -128,7 +128,7 @@
                 android:includeFontPadding="false"
                 android:maxLines="2"
                 android:textColor="#077334"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/nunito_regular"
                 android:textSize="10sp"
                 android:text="Male"
                 />
@@ -153,7 +153,7 @@
                 android:textColor="@color/white"
                 android:background="@color/purple_500"
                 android:textSize="10sp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/nunito_regular"
                 android:paddingHorizontal="8dp"
                 android:layout_marginRight="5dp"
                 />
@@ -163,7 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lira"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/nunito_regular"
                 />
 
 
