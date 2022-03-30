@@ -19,18 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
-            android:textColorHint="@color/text_input_color"
+            android:textColorHint="@color/purple_500"
             android:transitionName="username_input"
-            app:boxStrokeColor="@color/text_input_color"
+            app:boxStrokeColor="@color/purple_500"
             app:boxStrokeErrorColor="@color/purple_500"
-            app:hintTextColor="@color/text_input_color">
+            app:hintTextColor="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textColor="@color/text_input_color" />
+                android:textColor="@color/purple_500" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -44,18 +44,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Phone"
-            android:textColorHint="@color/text_input_color"
+            android:textColorHint="@color/purple_500"
             android:transitionName="username_input"
-            app:boxStrokeColor="@color/text_input_color"
+            app:boxStrokeColor="@color/purple_500"
             app:boxStrokeErrorColor="@color/purple_500"
-            app:hintTextColor="@color/text_input_color">
+            app:hintTextColor="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
-                android:textColor="@color/text_input_color" />
+                android:textColor="@color/purple_500" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -67,18 +67,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Email"
-            android:textColorHint="@color/text_input_color"
+            android:textColorHint="@color/purple_500"
             android:transitionName="username_input"
-            app:boxStrokeColor="@color/text_input_color"
+            app:boxStrokeColor="@color/purple_500"
             app:boxStrokeErrorColor="@color/purple_500"
-            app:hintTextColor="@color/text_input_color">
+            app:hintTextColor="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/text_input_color" />
+                android:textColor="@color/purple_500" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -90,11 +90,11 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:hint="Reason"
-            android:textColorHint="@color/text_input_color"
+            android:textColorHint="@color/purple_500"
             android:transitionName="username_input"
-            app:boxStrokeColor="@color/text_input_color"
-            app:boxStrokeErrorColor="@color/text_input_color"
-            app:hintTextColor="@color/text_input_color">
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeErrorColor="@color/purple_500"
+            app:hintTextColor="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextDescription"
@@ -106,7 +106,7 @@
                 android:maxLines="10"
                 android:minLines="6"
                 android:scrollbars="vertical"
-                android:textColor="@color/text_input_color" />
+                android:textColor="@color/purple_500" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
