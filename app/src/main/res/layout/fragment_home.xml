@@ -101,17 +101,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp">
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
 
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/addChildCard"
                 android:layout_width="0dp"
                 android:layout_height="129.69dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="11dp"
-                android:id="@+id/addChildCard"
 
                 >
 
@@ -163,82 +164,15 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="129.69dp"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="11dp"
-                android:id="@+id/findFamily"
-                >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingVertical="10dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_above="@+id/wallet_label"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_findfamily" />
-
-                    <TextView
-                        android:id="@+id/wallet_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/wallet_desc"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/nunito_bold"
-                        android:gravity="center"
-                        android:includeFontPadding="false"
-                        android:text="Find Family"
-                        android:textColor="@color/purple_200"
-                        android:textSize="17sp" />
-
-
-                    <TextView
-                        android:id="@+id/wallet_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerInParent="true"
-                        android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/nunito_regular"
-                        android:gravity="center"
-                        android:includeFontPadding="false"
-                        android:text="Search Family"
-
-                        android:textColor="@color/purple_200"
-
-                        android:textSize="12sp" />
-
-                </RelativeLayout>
-
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp">
-
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/addFamily"
                 android:layout_width="0dp"
                 android:layout_height="129.69dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="11dp"
-                android:id="@+id/addFamily"
-                >
+                app:cardCornerRadius="11dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -286,14 +220,23 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp">
+
+
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/allReports"
                 android:layout_width="0dp"
                 android:layout_height="129.69dp"
-                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="11dp"
-                android:id="@+id/allReports"
 
                 >
 
@@ -342,119 +285,82 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/findFamily"
+                android:layout_width="0dp"
+                android:layout_height="129.69dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="11dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="10dp">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_above="@+id/wallet_label"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_findfamily" />
+
+                    <TextView
+                        android:id="@+id/wallet_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/wallet_desc"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="About Us"
+                        android:textColor="@color/purple_200"
+                        android:textSize="17sp" />
+
+
+                    <TextView
+                        android:id="@+id/wallet_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/nunito_regular"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="Who we are"
+
+                        android:textColor="@color/purple_200"
+
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
         </LinearLayout>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/aboutusCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="20dp"
-            app:cardCornerRadius="11dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:padding="20dp">
-
-
-                <TextView
-                    android:id="@+id/aboutus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_regular"
-                    android:includeFontPadding="false"
-                    android:text="CEWOCHR"
-                    android:textColor="@color/purple_200"
-                    android:textSize="14sp"
-                    android:transitionName="logo_desc" />
-
-
-                <TextView
-                    android:id="@+id/aboutusdesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/aboutus"
-                    android:fontFamily="@font/nunito_bold"
-                    android:includeFontPadding="false"
-                    android:maxLines="2"
-                    android:text="About Us"
-                    android:textColor="@color/purple_200"
-                    android:textSize="17sp"
-                    android:transitionName="logo_text"
-
-                    />
-
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/WhatweDoCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="11dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-           >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:padding="20dp">
-
-
-                <TextView
-                    android:id="@+id/whatwedo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_regular"
-                    android:includeFontPadding="false"
-                    android:text="CEWOCHR"
-                    android:textColor="@color/purple_200"
-                    android:textSize="14sp"
-                    android:transitionName="logo_desc" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/whatwedo"
-                    android:fontFamily="@font/nunito_bold"
-                    android:includeFontPadding="false"
-                    android:maxLines="2"
-                    android:text="What we Do"
-                    android:textColor="@color/purple_200"
-                    android:textSize="17sp"
-                    android:transitionName="logo_text"
-
-                    />
-
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginHorizontal="20dp"
-android:layout_marginVertical="10dp"
-            android:padding="20dp"
-            >
-
+            android:layout_marginVertical="10dp"
+            android:orientation="vertical"
+            android:padding="20dp">
 
 
             <TextView
                 android:id="@+id/help"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:fontFamily="@font/nunito_regular"
                 android:includeFontPadding="false"
                 android:text="Need Help with anything?"
@@ -464,11 +370,11 @@ android:layout_marginVertical="10dp"
 
             <TextView
                 android:id="@+id/phonen0"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/wallet_descs"
                 android:layout_centerInParent="true"
+                android:layout_gravity="center"
                 android:fontFamily="@font/nunito_bold"
                 android:gravity="center"
                 android:includeFontPadding="false"

@@ -61,7 +61,7 @@ public class MovieApi {
             retrofit = new Retrofit.Builder()
                     .client(buildClient(context))
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("http://192.168.0.155:8080/projects/myfamLinkApp/mobile/api/v1/")
+                    .baseUrl("http://192.168.88.190:8080/projects/myfamLinkApp/mobile/api/v1/")
                     .build();
         }
         return retrofit;

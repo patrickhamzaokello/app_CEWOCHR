@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
         <activity android:name=".FindFamily"></activity>
-        <activity android:name=".AddFamily" />
+        <activity android:name=".SetAppointment" />
         <activity android:name=".AllReports" />
 
         <receiver

@@ -1,33 +1,25 @@
 package com.pkasemer.MyFamlinkApp.Fragments;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import com.pkasemer.MyFamlinkApp.Adapters.HomeSliderAdapter;
-import com.pkasemer.MyFamlinkApp.AddFamily;
+import com.pkasemer.MyFamlinkApp.SetAppointment;
 import com.pkasemer.MyFamlinkApp.AllReports;
 import com.pkasemer.MyFamlinkApp.Apis.MovieApi;
 import com.pkasemer.MyFamlinkApp.Apis.MovieService;
 import com.pkasemer.MyFamlinkApp.FindFamily;
 import com.pkasemer.MyFamlinkApp.Models.Banner;
-import com.pkasemer.MyFamlinkApp.Models.HomeBannerModel;
 import com.pkasemer.MyFamlinkApp.R;
 import com.pkasemer.MyFamlinkApp.ReportChild;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class Home extends Fragment {
@@ -91,7 +83,7 @@ public class Home extends Fragment {
         addFamily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(), AddFamily.class);
+                Intent i = new Intent(getContext(), SetAppointment.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 startActivity(i);

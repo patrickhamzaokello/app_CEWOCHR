@@ -13,6 +13,7 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +28,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.textfield.TextInputEditText;
 import com.pkasemer.MyFamlinkApp.Adapters.NameAdapter;
+import com.pkasemer.MyFamlinkApp.Apis.MovieApi;
+import com.pkasemer.MyFamlinkApp.Apis.MovieService;
 import com.pkasemer.MyFamlinkApp.Models.Name;
+import com.pkasemer.MyFamlinkApp.Models.PostResponse;
+import com.pkasemer.MyFamlinkApp.Models.Referal;
 import com.pkasemer.MyFamlinkApp.Singletons.VolleySingleton;
 import com.pkasemer.MyFamlinkApp.Utils.NetworkStateChecker;
 import com.pkasemer.MyFamlinkApp.localDatabase.DatabaseHelper;
@@ -40,13 +45,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+
 public class ReportChild extends AppCompatActivity implements View.OnClickListener {
 
-    /*
-     * this is the url to our webservice
-     * make sure you are using the ip instead of localhost
-     * it will not work if you are using localhost
-     * */
 
     //database helper object
     private DatabaseHelper db;
@@ -55,6 +58,7 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
     private Button buttonSave;
     private EditText editTextName;
     private EditText editTextDescription;
+    private EditText  editTextLocation;
 
     //List to store all the names
 
@@ -68,6 +72,9 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
     //Broadcast receiver to know the sync status
 
     ActionBar actionBar;
+    private MovieService movieService;
+
+    Referal referal = new Referal();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,11 +89,15 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         //initializing views and objects
+        movieService = MovieApi.getClient(ReportChild.this).create(MovieService.class);
+
         db = new DatabaseHelper(this);
 
         buttonSave = (Button) findViewById(R.id.buttonSave);
         editTextName = (TextInputEditText) findViewById(R.id.editTextName);
         editTextDescription = (TextInputEditText) findViewById(R.id.editTextDescription);
+        editTextLocation = (TextInputEditText) findViewById(R.id.editTextLocation);
+
 
         //adding click listener to button
         buttonSave.setOnClickListener(this);
@@ -104,6 +115,10 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
 
 
 
+    private Call<PostResponse> createReferralCase() {
+        return movieService.postReferCase(referal);
+    }
+
 
 
     /*
@@ -117,45 +132,63 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
         final String name = editTextName.getText().toString().trim();
         final String description = editTextDescription.getText().toString().trim();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_SAVE_NAME,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        try {
-                            JSONObject obj = new JSONObject(response);
-                            if (!obj.getBoolean("error")) {
-                                //if there is a success
-                                //storing the name to sqlite with status synced
-                                saveNameToLocalStorage(name, description, NAME_SYNCED_WITH_SERVER);
-                            } else {
-                                //if there is some error
-                                //saving the name to sqlite with status unsynced
-                                saveNameToLocalStorage(name, description, NAME_NOT_SYNCED_WITH_SERVER);
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        //on error storing the name to sqlite with status unsynced
-                        saveNameToLocalStorage(name, description, NAME_NOT_SYNCED_WITH_SERVER);
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("name", name);
-                params.put("description", description);
-                return params;
-            }
-        };
+        referal.setName(name);
+        referal.setPicture(name);
+        referal.setDescription(description);
+        referal.setCategoryId("1");
+        referal.setLongitude(2.239878798827563);
+        referal.setLatitude( 32.89395403994614);
+        referal.setReportedbyId("1");
 
-        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+        createReferralCase().enqueue(new Callback<PostResponse>() {
+            @Override
+            public void onResponse(Call<PostResponse> call, retrofit2.Response<PostResponse> response) {
+
+                //set response body to match OrderResponse Model
+                PostResponse postResponse = response.body();
+                progressDialog.dismiss();
+
+                //if orderResponses is not null
+                if (postResponse != null) {
+
+                    //if no error- that is error = false
+                    if (!postResponse.getError()) {
+                        Log.i("Order Success", postResponse.getMessage() + postResponse.getError() );
+                        //if there is a success
+                        //storing the name to sqlite with status synced
+                        saveNameToLocalStorage(name, description, NAME_SYNCED_WITH_SERVER);
+
+                    } else {
+                        Log.i("Ress", "message: " + (postResponse.getMessage()));
+                        Log.i("et", "error false: " + (postResponse.getError()));
+//                        ShowOrderFailed();
+
+                    }
+
+
+                } else {
+                    Log.i("Referral Response null", "Order is null Try Again: ");
+
+                    //if there is some error
+                    //saving the name to sqlite with status unsynced
+                    saveNameToLocalStorage(name, description, NAME_NOT_SYNCED_WITH_SERVER);
+                    return;
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<PostResponse> call, Throwable t) {
+                progressDialog.dismiss();
+
+                t.printStackTrace();
+                Log.i("Order Failed", "Order Failed Try Again: " + t);
+                //on error storing the name to sqlite with status unsynced
+                saveNameToLocalStorage(name, description, NAME_NOT_SYNCED_WITH_SERVER);
+            }
+        });
+
     }
 
     //saving the name to local storage
@@ -176,25 +209,5 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
         return true;
     }
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
 
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.maleRadio:
-                if (checked)
-                    // male clicked
-
-                    Toast.makeText(this, "male clicked", Toast.LENGTH_SHORT).show();
-
-                    break;
-            case R.id.femaleRadio:
-                if (checked)
-                    // female clicked
-                    Toast.makeText(this, "fe-male clicked", Toast.LENGTH_SHORT).show();
-
-                break;
-        }
-    }
 }
