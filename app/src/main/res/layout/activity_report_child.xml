@@ -69,7 +69,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextDescription_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -100,12 +99,73 @@
 
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Choose Child Referral Category" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/support_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_input_color"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Support" />
+
+
+                <RadioButton
+                    android:id="@+id/child_tracing_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_input_color"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Child Tracing" />
+
+                <RadioButton
+                    android:id="@+id/child_reunion_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_input_color"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Child Reunion" />
+
+
+                <RadioButton
+                    android:id="@+id/other_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_input_color"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Other" />
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
 
         <Button
             android:id="@+id/buttonSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:text="Save Record" />
 
 

@@ -43,7 +43,7 @@ public class AllReports extends AppCompatActivity implements ReportsInterface {
     TextView grandtotalvalue;
     LinearLayout procceed_checkout_layout;
 
-    Button btnCheckout;
+    Button btnCheckout,btnDeleteAll;
     ActionBar actionBar;
 
 
@@ -70,6 +70,8 @@ public class AllReports extends AppCompatActivity implements ReportsInterface {
         recyclerView = findViewById(R.id.reports_main_recycler);
         procceed_checkout_layout = findViewById(R.id.procceed_checkout_layout);
         btnCheckout = findViewById(R.id.btnCheckout);
+        btnDeleteAll = findViewById(R.id.btnDeleteAll);
+
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -84,6 +86,16 @@ public class AllReports extends AppCompatActivity implements ReportsInterface {
                 refreshList();
             }
         });
+
+        btnDeleteAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.clearReports();
+                reportsAdapter.notifyDataSetChanged();
+            }
+        });
+
+
 
         registerReceiver(new NetworkStateChecker(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 

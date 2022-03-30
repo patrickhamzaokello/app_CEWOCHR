@@ -1,4 +1,5 @@
 package com.pkasemer.MyFamlinkApp;
+
 import static com.pkasemer.MyFamlinkApp.HttpRequests.URLs.URL_SAVE_NAME;
 
 import androidx.appcompat.app.ActionBar;
@@ -15,10 +16,14 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -48,7 +53,7 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class ReportChild extends AppCompatActivity implements View.OnClickListener {
+public class ReportChild extends AppCompatActivity {
 
 
     //database helper object
@@ -58,7 +63,7 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
     private Button buttonSave;
     private EditText editTextName;
     private EditText editTextDescription;
-    private EditText  editTextLocation;
+    private EditText editTextLocation;
 
     //List to store all the names
 
@@ -100,25 +105,20 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
 
 
         //adding click listener to button
-        buttonSave.setOnClickListener(this);
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveNameToServer();
+            }
+        });
 
 
-        //calling the method to load all the stored names
-
-        //the broadcast receiver to update sync status
-
-
-        //registering the broadcast receiver to update sync status
     }
-
-
-
 
 
     private Call<PostResponse> createReferralCase() {
         return movieService.postReferCase(referal);
     }
-
 
 
     /*
@@ -135,9 +135,8 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
         referal.setName(name);
         referal.setPicture(name);
         referal.setDescription(description);
-        referal.setCategoryId("1");
         referal.setLongitude(2.239878798827563);
-        referal.setLatitude( 32.89395403994614);
+        referal.setLatitude(32.89395403994614);
         referal.setReportedbyId("1");
 
         createReferralCase().enqueue(new Callback<PostResponse>() {
@@ -153,7 +152,7 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
 
                     //if no error- that is error = false
                     if (!postResponse.getError()) {
-                        Log.i("Order Success", postResponse.getMessage() + postResponse.getError() );
+                        Log.i("Order Success", postResponse.getMessage() + postResponse.getError());
                         //if there is a success
                         //storing the name to sqlite with status synced
                         saveNameToLocalStorage(name, description, NAME_SYNCED_WITH_SERVER);
@@ -198,10 +197,6 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
         db.addName(name, description, status);
     }
 
-    @Override
-    public void onClick(View view) {
-        saveNameToServer();
-    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -210,4 +205,31 @@ public class ReportChild extends AppCompatActivity implements View.OnClickListen
     }
 
 
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch (view.getId()) {
+            case R.id.support_radio:
+                if (checked)
+                    // male clicked
+                    referal.setCategoryId("support");
+                break;
+            case R.id.child_tracing_radio:
+                if (checked)
+                    referal.setCategoryId("child_tracing");
+                break;
+
+            case R.id.child_reunion_radio:
+                if (checked)
+                    referal.setCategoryId("child_reunion");
+                break;
+            case R.id.other_radio:
+                if (checked)
+                    referal.setCategoryId("other");
+
+                break;
+        }
+    }
 }

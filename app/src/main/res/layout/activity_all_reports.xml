@@ -73,6 +73,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:strokeWidth="0dp" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDeleteAll"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Clear Records"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:transitionName="account_change"
+                app:layout_constraintStart_toStartOf="parent"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp" />
+
         </LinearLayout>
 
         <LinearLayout
