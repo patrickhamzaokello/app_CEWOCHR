@@ -90,8 +90,22 @@ public class AllReports extends AppCompatActivity implements ReportsInterface {
         btnDeleteAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.clearReports();
-                reportsAdapter.notifyDataSetChanged();
+
+
+                new SweetAlertDialog(AllReports.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Clear Database")
+                        .setContentText("All Information will be lost")
+                        .setConfirmText("OK")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                db.clearReports();
+                                reportsAdapter.notifyDataSetChanged();
+                                sDialog.dismissWithAnimation();
+                                Intent i = new Intent(AllReports.this, RootActivity.class);
+                                startActivity(i);
+                            }
+                        }).show();
             }
         });
 

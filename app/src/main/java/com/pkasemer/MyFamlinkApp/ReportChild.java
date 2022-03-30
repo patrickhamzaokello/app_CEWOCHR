@@ -35,9 +35,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.pkasemer.MyFamlinkApp.Adapters.NameAdapter;
 import com.pkasemer.MyFamlinkApp.Apis.MovieApi;
 import com.pkasemer.MyFamlinkApp.Apis.MovieService;
+import com.pkasemer.MyFamlinkApp.HelperClasses.SharedPrefManager;
 import com.pkasemer.MyFamlinkApp.Models.Name;
 import com.pkasemer.MyFamlinkApp.Models.PostResponse;
 import com.pkasemer.MyFamlinkApp.Models.Referal;
+import com.pkasemer.MyFamlinkApp.Models.UserModel;
 import com.pkasemer.MyFamlinkApp.Singletons.VolleySingleton;
 import com.pkasemer.MyFamlinkApp.Utils.NetworkStateChecker;
 import com.pkasemer.MyFamlinkApp.localDatabase.DatabaseHelper;
@@ -50,6 +52,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -132,12 +135,14 @@ public class ReportChild extends AppCompatActivity {
         final String name = editTextName.getText().toString().trim();
         final String description = editTextDescription.getText().toString().trim();
 
+        UserModel user = SharedPrefManager.getInstance(ReportChild.this).getUser();
+
         referal.setName(name);
-        referal.setPicture(name);
+        referal.setPicture("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNsJyFJ1hSBVJ4mVkdeyNNJCTR3QyYaEHjug&amp;usqp=CAU");
         referal.setDescription(description);
         referal.setLongitude(2.239878798827563);
         referal.setLatitude(32.89395403994614);
-        referal.setReportedbyId("1");
+        referal.setReportedbyId(String.valueOf(user.getId()));
 
         createReferralCase().enqueue(new Callback<PostResponse>() {
             @Override
@@ -152,15 +157,43 @@ public class ReportChild extends AppCompatActivity {
 
                     //if no error- that is error = false
                     if (!postResponse.getError()) {
-                        Log.i("Order Success", postResponse.getMessage() + postResponse.getError());
+                        Log.i("Case Success", postResponse.getMessage() + postResponse.getError());
                         //if there is a success
                         //storing the name to sqlite with status synced
                         saveNameToLocalStorage(name, description, NAME_SYNCED_WITH_SERVER);
+                        new SweetAlertDialog(ReportChild.this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Case Referred")
+                                .setContentText("This case has been referred successfully")
+                                .setConfirmText("OK")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+
+                                        sDialog.dismissWithAnimation();
+
+                                        Intent i = new Intent(ReportChild.this, RootActivity.class);
+                                        startActivity(i);
+                                    }
+                                }).show();
 
                     } else {
                         Log.i("Ress", "message: " + (postResponse.getMessage()));
                         Log.i("et", "error false: " + (postResponse.getError()));
 //                        ShowOrderFailed();
+                        new SweetAlertDialog(ReportChild.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Error")
+                                .setContentText("Try again")
+                                .setConfirmText("OK")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+
+                                        sDialog.dismissWithAnimation();
+
+                                        Intent i = new Intent(ReportChild.this, RootActivity.class);
+                                        startActivity(i);
+                                    }
+                                }).show();
 
                     }
 
@@ -171,6 +204,21 @@ public class ReportChild extends AppCompatActivity {
                     //if there is some error
                     //saving the name to sqlite with status unsynced
                     saveNameToLocalStorage(name, description, NAME_NOT_SYNCED_WITH_SERVER);
+
+                    new SweetAlertDialog(ReportChild.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Case Saved Locally")
+                            .setContentText("Information is saved on the phone")
+                            .setConfirmText("OK")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+
+                                    sDialog.dismissWithAnimation();
+
+                                    Intent i = new Intent(ReportChild.this, RootActivity.class);
+                                    startActivity(i);
+                                }
+                            }).show();
                     return;
 
                 }
@@ -185,6 +233,21 @@ public class ReportChild extends AppCompatActivity {
                 Log.i("Order Failed", "Order Failed Try Again: " + t);
                 //on error storing the name to sqlite with status unsynced
                 saveNameToLocalStorage(name, description, NAME_NOT_SYNCED_WITH_SERVER);
+
+                new SweetAlertDialog(ReportChild.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Case Saved Locally")
+                        .setContentText("Information is saved on the phone")
+                        .setConfirmText("OK")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+
+                                sDialog.dismissWithAnimation();
+
+                                Intent i = new Intent(ReportChild.this, RootActivity.class);
+                                startActivity(i);
+                            }
+                        }).show();
             }
         });
 
@@ -192,8 +255,6 @@ public class ReportChild extends AppCompatActivity {
 
     //saving the name to local storage
     private void saveNameToLocalStorage(String name, String description, int status) {
-        editTextName.setText("");
-        editTextDescription.setText("");
         db.addName(name, description, status);
     }
 
