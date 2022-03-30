@@ -44,7 +44,7 @@ public class RootActivity extends AppCompatActivity {
 
         //Pass the ID's of Different destinations
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_search, R.id.navigation_message, R.id.navigation_profile )
+                R.id.navigation_home,  R.id.navigation_message, R.id.navigation_profile )
                 .build();
 
         //Initialize NavController.
