@@ -38,7 +38,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/report_child_location"
+            android:id="@+id/report_app_phone"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             app:hintTextColor="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextLocation"
+                android:id="@+id/editText_app_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
@@ -61,7 +61,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/report_child_email"
+            android:id="@+id/report_app_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
             app:hintTextColor="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editTextEmail_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:hint="Reason"
+            android:hint="Purpose of the appointment"
             android:textColorHint="@color/purple_500"
             android:transitionName="username_input"
             app:boxStrokeColor="@color/purple_500"
@@ -97,7 +97,7 @@
             app:hintTextColor="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextDescription"
+                android:id="@+id/editText_purpose_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top|left"
