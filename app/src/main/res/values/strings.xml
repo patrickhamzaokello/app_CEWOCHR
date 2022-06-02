@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyFamlinkApp</string>
+    <string name="app_name">Famlink</string>
     <!--Title-->
     <string name="first_slide_title">Professional Service</string>
     <string name="second_slide_title">Healthy Options</string>

@@ -3,13 +3,13 @@ package com.pkasemer.MyFamlinkApp.Apis;
 
 import android.content.Context;
 
-import com.androidnetworking.interceptors.HttpLoggingInterceptor;
 import com.pkasemer.MyFamlinkApp.Utils.NetworkUtil;
 
 import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -61,7 +61,8 @@ public class MovieApi {
             retrofit = new Retrofit.Builder()
                     .client(buildClient(context))
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("http://192.168.88.190:8080/projects/myfamLinkApp/mobile/api/v1/")
+//                    .baseUrl("http://192.168.88.173:8080/projects/myfamLinkApp/mobile/api/v1/")
+                    .baseUrl("http://famlink.kakebe.com/mobile/api/v1/")
                     .build();
         }
         return retrofit;

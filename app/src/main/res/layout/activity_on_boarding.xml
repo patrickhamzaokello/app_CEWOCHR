@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboardingBG"
+    android:background="@color/bluble"
     tools:context=".OnBoarding">
 
     <androidx.viewpager.widget.ViewPager
@@ -27,7 +27,7 @@
         android:onClick="skip"
         android:padding="10dp"
         android:text="@string/skip_btn"
-        android:textColor="@color/white"
+        android:textColor="@color/purple_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,10 +49,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/let_get_started"
-            android:textColor="@color/white"
+            android:textColor="@color/purple_500"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
-            app:strokeColor="@color/white"
+            app:strokeColor="@color/purple_500"
             app:strokeWidth="1dp" />
 
         <LinearLayout
@@ -76,7 +76,7 @@
             android:paddingHorizontal="0dp"
             android:paddingBottom="30dp"
             android:text="@string/next_btn"
-            android:textColor="@color/white" />
+            android:textColor="@color/purple_500" />
 
 
 

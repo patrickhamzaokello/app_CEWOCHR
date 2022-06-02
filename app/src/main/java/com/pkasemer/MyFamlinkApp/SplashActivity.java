@@ -54,7 +54,7 @@ public class SplashActivity extends AppCompatActivity {
                 onboarding_sharedPreferences = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
                 boolean isFirstTime = onboarding_sharedPreferences.getBoolean("firstTime", true);
 
-                if(isFirstTime){
+                if(!isFirstTime){
 
                     SharedPreferences.Editor editor = onboarding_sharedPreferences.edit();
                     editor.putBoolean("firstTime", false);
@@ -65,13 +65,6 @@ public class SplashActivity extends AppCompatActivity {
                     Intent intent = new Intent(SplashActivity.this, LoginMaterial.class);
                     startActivity(intent);
 
-//                    Pair[] pairs = new Pair[3];
-//                    pairs[0] = new Pair<View, String>(image,"logo_image");
-//                    pairs[1] = new Pair<View, String>(logo,"logo_text");
-//                    pairs[2] = new Pair<View, String>(slogan,"logo_desc");
-//
-//                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this, pairs);
-//                    startActivity(intent, options.toBundle());
                 }
                 finish();
 
