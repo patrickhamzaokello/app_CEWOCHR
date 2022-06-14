@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Famlink</string>
     <!--Title-->
-    <string name="first_slide_title">Professional Service</string>
-    <string name="second_slide_title">Healthy Options</string>
-    <string name="third_slide_title">Share Meals</string>
-    <string name="fourth_slide_title">Great Impact</string>
+    <string name="first_slide_title">Welcome</string>
+    <string name="second_slide_title">#1 Report Cases</string>
+    <string name="third_slide_title">#2 Set Appointments</string>
+    <string name="fourth_slide_title">#3 Timely Feedbacks </string>
     <!--Descriptions-->
-    <string name="first_slide_desc">We pride our selves in the professional Serivice that we offer from customer support to Safe and Fast Handling of Orders. </string>
-    <string name="second_slide_desc">We have all categories of Food and drink options with custome made categories for Healthy meals</string>
-    <string name="third_slide_desc">We make it Easy for you to share meals for your loved ones. select a menu and share with friends and family</string>
-    <string name="fourth_slide_desc">Every order made with us helps in promoting sustainable plastic waste management and recylcing through our partners- Takataka Plastics</string>
+    <string name="first_slide_desc">Famlink Application is the right tool to find and connect with families. We handle all cases about child and family related matters.  </string>
+    <string name="second_slide_desc">Report any case about family or child related issues and we shall reach out to you as soon as possible. we operate 24/7.</string>
+    <string name="third_slide_desc">If you intend to visit our office, Use this application to set appointments and get feedbacks about your meetings instantly.</string>
+    <string name="fourth_slide_desc">Stay updated about our activities on family reunion and feedbacks about your reported cases or appointments through this app.</string>
     <!--Buttons-->
     <string name="skip_btn">Skip</string>
     <string name="next_btn">Next</string>

@@ -49,10 +49,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/let_get_started"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/white"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
-            app:strokeColor="@color/purple_500"
+            app:strokeColor="@color/white"
             app:strokeWidth="1dp" />
 
         <LinearLayout
