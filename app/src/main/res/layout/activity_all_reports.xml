@@ -35,7 +35,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_bold"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="Total Records"
                     android:textColor="@color/white" />
                 <RelativeLayout
@@ -47,7 +47,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:fontFamily="@font/nunito_bold"
+                        android:fontFamily="@font/roboto_bold"
                         android:text="43"
                         android:textColor="@color/white"
                         android:textSize="20dp" />
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#475494"
-                android:fontFamily="@font/nunito_bold"
+                android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
                 android:text="Refresh"
                 android:textAllCaps="false"

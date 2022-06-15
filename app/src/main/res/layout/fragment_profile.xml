@@ -42,7 +42,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/image_profile_card_view"
-                android:fontFamily="@font/nunito_bold"
+                android:fontFamily="@font/roboto_bold"
                 android:includeFontPadding="false"
                 android:text="Patrick Hamza"
                 android:textColor="@color/white"
@@ -109,7 +109,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/wallet_labels"
                         android:layout_centerInParent="true"
-                        android:fontFamily="@font/nunito_regular"
+                        android:fontFamily="@font/roboto_regular"
                         android:includeFontPadding="false"
                         android:text="Reports"
                         android:textColor="@color/white"
@@ -158,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/wallet_label"
                         android:layout_centerInParent="true"
-                        android:fontFamily="@font/nunito_regular"
+                        android:fontFamily="@font/roboto_regular"
                         android:includeFontPadding="false"
                         android:text="Messages"
                         android:textColor="@color/white"
@@ -251,7 +251,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/purple_200"
-                android:fontFamily="@font/nunito_bold"
+                android:fontFamily="@font/roboto_bold"
                 android:text="Logout" />
 
         </LinearLayout>
