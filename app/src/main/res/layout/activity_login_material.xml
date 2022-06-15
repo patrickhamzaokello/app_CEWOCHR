@@ -23,9 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Hello there, Welcome back to Famlink App"
+            android:text="Welcome back"
             android:textColor="#000"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:transitionName="logo_text"
 
             />
@@ -35,10 +35,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="Sign In to Continue"
-            android:textColor="@color/purple_500"
-            android:layout_marginTop="10dp"
-            android:textSize="16sp"
+            android:text="Sign in to Famlink App"
+            android:textColor="@color/nice_black"
+            android:textSize="19sp"
             android:transitionName="logo_desc" />
 
         <LinearLayout
@@ -54,18 +53,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username / Email"
-                android:textColorHint="@color/purple_500"
+                android:textColorHint="@color/nice_black"
                 android:transitionName="username_input"
-                app:boxStrokeColor="@color/purple_500"
-                app:boxStrokeErrorColor="@color/purple_500"
-                app:hintTextColor="@color/purple_500">
+                app:boxStrokeColor="@color/nice_black"
+                app:boxStrokeErrorColor="@color/nice_black"
+                app:hintTextColor="@color/nice_black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputTextUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@color/purple_500" />
+                    android:textColor="@color/nice_black" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -77,21 +76,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Password"
-                android:textColorHint="@color/purple_500"
+                android:textColorHint="@color/nice_black"
                 android:transitionName="password_input"
-                app:boxStrokeColor="@color/purple_500"
-                app:boxStrokeErrorColor="@color/purple_500"
-                app:endIconTint="@color/purple_500"
-                app:hintTextColor="@color/purple_500"
+                app:boxStrokeColor="@color/nice_black"
+                app:boxStrokeErrorColor="@color/nice_black"
+                app:endIconTint="@color/nice_black"
+                app:hintTextColor="@color/nice_black"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/purple_500">
+                app:passwordToggleTint="@color/nice_black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@color/purple_500"
+                    android:textColor="@color/nice_black"
                     app:endIconTint="@color/purple_500"
 
                     />
@@ -99,19 +98,13 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:background="#00000000"
-                android:text="Forgot Password"
-                android:textColor="#757575" />
+
 
             <Button
                 android:id="@+id/login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="5dp"
                 android:background="#000000"
                 android:text="Log In"
@@ -133,6 +126,16 @@
                 app:strokeColor="@color/purple_500"
                 app:strokeWidth="1dp" />
 
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textAllCaps="false"
+                android:background="#00000000"
+                android:text="Forgot password?"
+                android:textColor="#007CFF" />
 
         </LinearLayout>
 

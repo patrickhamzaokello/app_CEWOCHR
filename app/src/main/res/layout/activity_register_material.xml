@@ -17,41 +17,30 @@
             android:layout_height="match_parent"
             android:background="#fff"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp">
+            android:paddingHorizontal="10dp">
 
             <TextView
                 android:id="@+id/register_welcomeback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginVertical="20dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Welcome"
-                android:textColor="#000"
-                android:textSize="40sp"
+                android:text="Create your account"
+                android:textColor="@color/nice_black"
+                android:textSize="23sp"
                 android:includeFontPadding="false"
                 android:transitionName="logo_text"
 
                 />
 
-            <TextView
-                android:id="@+id/register_subtext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:includeFontPadding="false"
-                android:textColor="@color/black"
-                android:text="Create An Account to Continue"
-                android:textSize="18sp"
-                android:transitionName="logo_desc" />
+
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical">
-
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_fullname"
@@ -62,7 +51,6 @@
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:boxStrokeErrorColor="@color/purple_500"
-                    android:layout_marginTop="5dp"
                     android:hint="Full Name">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -82,7 +70,6 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:hint="Username"
                     app:hintTextColor="@color/black"
                     android:textColorHint="@color/black"
@@ -108,7 +95,6 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     app:hintTextColor="@color/black"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
@@ -130,7 +116,6 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     app:hintTextColor="@color/black"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
@@ -153,7 +138,6 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     app:hintTextColor="@color/black"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
@@ -177,7 +161,6 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:hint="Password"
                     app:hintTextColor="@color/black"
                     android:textColorHint="@color/black"
@@ -205,7 +188,6 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="10dp"
                     android:hint="Confirm Password"
                     android:transitionName="password_input"
                     app:hintTextColor="@color/black"
@@ -232,7 +214,7 @@
                     android:id="@+id/register_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     android:background="#000000"
                     android:text="Register"

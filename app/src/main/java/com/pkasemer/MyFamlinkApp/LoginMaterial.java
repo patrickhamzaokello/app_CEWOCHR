@@ -30,7 +30,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class LoginMaterial extends AppCompatActivity {
 
-    TextView logoText, sloganText;
+    TextView logoText;
     ImageView image;
     Button callSignUp, loginbtn;
     TextInputLayout username_layout, password_layout;
@@ -45,22 +45,13 @@ public class LoginMaterial extends AppCompatActivity {
         setContentView(R.layout.activity_login_material);
 
         ActionBar actionBar = getSupportActionBar(); // or getActionBar();
-        getSupportActionBar().setTitle("Zodongo Foods"); // set the top title
-        String title = actionBar.getTitle().toString(); // get the title
         actionBar.hide();
 
-        //if the user is already logged in we will directly start the profile activity
-        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
-            finish();
-            startActivity(new Intent(this, RootActivity.class));
-            return;
-        }
 
         //Hooks
         callSignUp = findViewById(R.id.signup_screen);
         loginbtn = findViewById(R.id.login_btn);
         logoText = findViewById(R.id.login_welcomeback);
-        sloganText = findViewById(R.id.login_subtext);
 
         username_layout = findViewById(R.id.login_username);
         password_layout = findViewById(R.id.login_password);

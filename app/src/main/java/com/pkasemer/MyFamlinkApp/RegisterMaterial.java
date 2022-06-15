@@ -30,7 +30,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class RegisterMaterial extends AppCompatActivity {
 
-    TextView logoText, sloganText;
+    TextView logoText;
     Button callLogIN, register_btn;
     TextInputLayout username_layout, password_layout;
 
@@ -62,7 +62,6 @@ public class RegisterMaterial extends AppCompatActivity {
         callLogIN = findViewById(R.id.login_screen);
         register_btn = findViewById(R.id.register_btn);
         logoText = findViewById(R.id.register_welcomeback);
-        sloganText = findViewById(R.id.register_subtext);
 
         username_layout = findViewById(R.id.login_username);
         password_layout = findViewById(R.id.login_password);
