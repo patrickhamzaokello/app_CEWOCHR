@@ -69,8 +69,6 @@ public class RegisterMaterial extends AppCompatActivity {
         //get text from input boxes
         inputTextFullname = findViewById(R.id.inputTextFullname);
         inputTextUsername = findViewById(R.id.inputTextUsername);
-        inputTextEmail = findViewById(R.id.inputTextEmail);
-        inputTextUserAddress  = findViewById(R.id.inputTextUserAddress);
         inputTextPhone = findViewById(R.id.inputTextPhone);
         inputTextPassword = findViewById(R.id.inputTextPassword);
         inputTextConfirmPassword = findViewById(R.id.inputTextConfirmPassword);

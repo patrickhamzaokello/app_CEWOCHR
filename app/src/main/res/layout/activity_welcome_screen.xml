@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/purple_500"
+    android:background="@color/white"
     android:padding="20dp"
 
     tools:context=".WelcomeScreen">
@@ -19,7 +19,7 @@
         android:includeFontPadding="false"
         android:text="Famlink"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/purple_500"
         android:textSize="30sp"
         android:transitionName="logo_text"
 
@@ -38,7 +38,7 @@
         android:includeFontPadding="false"
         android:text="Child and family reintegration App"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/purple_500"
         android:textSize="18sp"
 
         android:transitionName="logo_text"
@@ -54,11 +54,12 @@
         android:layout_height="wrap_content"
         android:text="Get Started"
         android:textAllCaps="false"
-        android:paddingVertical="10dp"
-        android:textColor="@color/purple_500"
-        android:backgroundTint="@color/white"
+        android:paddingVertical="20dp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/purple_500"
         app:layout_constraintBottom_toTopOf="@+id/w_login_screen"
-        app:strokeColor="@color/white"
+        app:strokeColor="@color/purple_500"
         app:strokeWidth="1dp"
     />
 
@@ -69,9 +70,11 @@
         android:layout_height="wrap_content"
         android:text="Sign In"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/purple_500"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:strokeColor="@color/white"
+        app:strokeColor="@color/purple_500"
         app:strokeWidth="1dp" />
 
 

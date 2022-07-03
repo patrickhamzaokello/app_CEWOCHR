@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Famlink</string>
     <!--Title-->
-    <string name="first_slide_title">Welcome</string>
+    <string name="first_slide_title">Welcome to Famlink</string>
     <string name="second_slide_title">#1 Report Cases</string>
     <string name="third_slide_title">#2 Set Appointments</string>
     <string name="fourth_slide_title">#3 Timely Feedbacks </string>

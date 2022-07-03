@@ -53,6 +53,11 @@ public class OnBoarding extends AppCompatActivity {
             addDots(0);
             viewPager.addOnPageChangeListener(changeListener);
 
+
+
+            animation = AnimationUtils.loadAnimation(OnBoarding.this, R.anim.bottom_anim);
+            letsGetStarted.setAnimation(animation);
+
             findViewById(R.id.get_started_btn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -79,14 +84,16 @@ public class OnBoarding extends AppCompatActivity {
 
             for (int i = 0; i < dots.length; i++) {
                 dots[i] = new TextView(this);
-                dots[i].setText(Html.fromHtml("•"));
-                dots[i].setTextSize(35);
-
+                dots[i].setText(Html.fromHtml("."));
+                dots[i].setTextSize(58);
+                dots[i].setTextColor(getResources().getColor(R.color.purple_200));
+                dots[i].setPadding(0,0,0,0);
+                dots[i].setIncludeFontPadding(false);
                 dotsLayout.addView(dots[i]);
             }
 
             if (dots.length > 0) {
-                dots[position].setTextColor(getResources().getColor(R.color.white));
+                dots[position].setTextColor(getResources().getColor(R.color.buttonRed));
             }
 
         }
@@ -101,18 +108,6 @@ public class OnBoarding extends AppCompatActivity {
             public void onPageSelected(int position) {
                 addDots(position);
                 currentPos = position;
-
-                if (position == 0) {
-                    letsGetStarted.setVisibility(View.INVISIBLE);
-                } else if (position == 1) {
-                    letsGetStarted.setVisibility(View.INVISIBLE);
-                } else if (position == 2) {
-                    letsGetStarted.setVisibility(View.INVISIBLE);
-                } else {
-                    animation = AnimationUtils.loadAnimation(OnBoarding.this, R.anim.bottom_anim);
-                    letsGetStarted.setAnimation(animation);
-                    letsGetStarted.setVisibility(View.VISIBLE);
-                }
 
             }
 

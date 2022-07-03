@@ -29,8 +29,6 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_activity);
 
         ActionBar actionBar = getSupportActionBar(); // or getActionBar();
-        getSupportActionBar().setTitle("Zodongo Foods"); // set the top title
-        String title = actionBar.getTitle().toString(); // get the title
         actionBar.hide();
 
         //animation

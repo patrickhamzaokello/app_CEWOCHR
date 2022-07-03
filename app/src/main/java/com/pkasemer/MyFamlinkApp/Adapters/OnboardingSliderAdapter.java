@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,10 +26,10 @@ public class OnboardingSliderAdapter extends PagerAdapter {
     }
 
     int images[] = {
-            R.drawable.chefone,
-            R.drawable.healthyone,
-            R.drawable.eatone,
-            R.drawable.worldone,
+            R.drawable.ic_undraw_slider_re_ch7w,
+            R.drawable.ic_undraw_hiring_re_yk5n,
+            R.drawable.ic_undraw_checking_boxes_re_9h8m,
+            R.drawable.ic_undraw_feedback_re_urmj,
     };
 
     int headings[] = {
@@ -51,7 +52,7 @@ public class OnboardingSliderAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == (ConstraintLayout) object;
+        return view == (RelativeLayout) object;
     }
 
     @NonNull
@@ -76,6 +77,6 @@ public class OnboardingSliderAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((ConstraintLayout) object);
+        container.removeView((RelativeLayout) object);
     }
 }
