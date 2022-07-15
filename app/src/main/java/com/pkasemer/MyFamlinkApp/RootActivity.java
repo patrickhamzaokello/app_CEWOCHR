@@ -17,12 +17,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.pkasemer.MyFamlinkApp.localDatabase.SenseDBHelper;
 
 public class RootActivity extends AppCompatActivity {
 
     BottomNavigationView navView;
-    SenseDBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,6 @@ public class RootActivity extends AppCompatActivity {
         navView = findViewById(R.id.bottomNav_view);
         LocalBroadcastManager.getInstance(this).registerReceiver(mMasage,new IntentFilter(getString(R.string.cartcoutAction)));
 
-        db = new SenseDBHelper(this);
 
         //Pass the ID's of Different destinations
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -84,7 +81,7 @@ public class RootActivity extends AppCompatActivity {
     };
 
     private void updatecartCount() {
-        int mycartcount = db.countCart();
+        int mycartcount = 1;
         if(mycartcount != 0){
             navView.getOrCreateBadge(R.id.navigation_message).setNumber(mycartcount);
             navView.getOrCreateBadge(R.id.navigation_message).setVisible(true);

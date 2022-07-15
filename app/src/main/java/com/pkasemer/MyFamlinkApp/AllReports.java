@@ -10,7 +10,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +20,7 @@ import android.widget.TextView;
 
 import com.pkasemer.MyFamlinkApp.Adapters.ReportsAdapter;
 import com.pkasemer.MyFamlinkApp.HelperClasses.ReportsInterface;
-import com.pkasemer.MyFamlinkApp.Models.Name;
+import com.pkasemer.MyFamlinkApp.Models.Case;
 import com.pkasemer.MyFamlinkApp.Utils.NetworkStateChecker;
 import com.pkasemer.MyFamlinkApp.localDatabase.DatabaseHelper;
 
@@ -35,7 +34,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class  AllReports extends AppCompatActivity implements ReportsInterface {
 
     private DatabaseHelper db;
-    List<Name> nameList;
+    List<Case> caseList;
     private ProgressBar progressBar;
     ReportsAdapter reportsAdapter;
     RecyclerView recyclerView;
@@ -78,7 +77,7 @@ public class  AllReports extends AppCompatActivity implements ReportsInterface {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         db = new DatabaseHelper(this);
-        nameList = new ArrayList<>();
+        caseList = new ArrayList<>();
 
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,12 +133,12 @@ public class  AllReports extends AppCompatActivity implements ReportsInterface {
 
 
     private void loadReports() {
-        nameList.clear();
-        nameList = db.listDBNames();
-        if (nameList.size() > 0) {
+        caseList.clear();
+        caseList = db.list_DB_Cases();
+        if (caseList.size() > 0) {
             progressBar.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
-            reportsAdapter = new ReportsAdapter(this, nameList, this);
+            reportsAdapter = new ReportsAdapter(this, caseList, this);
             recyclerView.setAdapter(reportsAdapter);
             reportsAdapter.notifyDataSetChanged();
             grandtotalvalue();
@@ -164,7 +163,7 @@ public class  AllReports extends AppCompatActivity implements ReportsInterface {
     }
 
     @Override
-    public void deletemenuitem(String childid, Name foodDBModel) {
+    public void deletemenuitem(String childid, Case foodDBModel) {
         new SweetAlertDialog(getApplicationContext(), SweetAlertDialog.WARNING_TYPE)
                 .setTitleText("Are you sure?")
                 .setContentText("Item will be Removed From Cart")

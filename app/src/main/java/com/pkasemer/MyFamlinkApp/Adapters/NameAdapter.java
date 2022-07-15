@@ -8,24 +8,24 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.pkasemer.MyFamlinkApp.Models.Name;
+import com.pkasemer.MyFamlinkApp.Models.Case;
 import com.pkasemer.MyFamlinkApp.R;
 
 import java.util.List;
 
-public class NameAdapter extends ArrayAdapter<Name> {
+public class NameAdapter extends ArrayAdapter<Case> {
 
     //storing all the names in the list
-    private List<Name> names;
+    private List<Case> aCases;
 
     //context object
     private Context context;
 
     //constructor
-    public NameAdapter(Context context, int resource, List<Name> names) {
-        super(context, resource, names);
+    public NameAdapter(Context context, int resource, List<Case> aCases) {
+        super(context, resource, aCases);
         this.context = context;
-        this.names = names;
+        this.aCases = aCases;
     }
 
     @Override
@@ -41,17 +41,17 @@ public class NameAdapter extends ArrayAdapter<Name> {
         ImageView imageViewStatus = (ImageView) listViewItem.findViewById(R.id.imageViewStatus);
 
         //getting the current name
-        Name name = names.get(position);
+        Case aCase = aCases.get(position);
 
         //setting the name to textview
-        textViewName.setText(name.getName());
-        child_description.setText(name.getDescription());
+        textViewName.setText(aCase.getName());
+        child_description.setText(aCase.getDescription());
 
 
         //if the synced status is 0 displaying
         //queued icon
         //else displaying synced icon
-        if (name.getStatus() == 0)
+        if (aCase.getStatus() == 0)
             imageViewStatus.setBackgroundResource(R.drawable.ic_offline);
         else
             imageViewStatus.setBackgroundResource(R.drawable.ic_success);

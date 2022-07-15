@@ -14,7 +14,6 @@ import com.pkasemer.MyFamlinkApp.AllReports;
 import com.pkasemer.MyFamlinkApp.Apis.ApiBase;
 import com.pkasemer.MyFamlinkApp.Apis.ApiEndPoints;
 import com.pkasemer.MyFamlinkApp.FindFamily;
-import com.pkasemer.MyFamlinkApp.Models.Banner;
 import com.pkasemer.MyFamlinkApp.R;
 import com.pkasemer.MyFamlinkApp.ReportChild;
 import com.smarteist.autoimageslider.SliderView;
@@ -32,7 +31,6 @@ public class Home extends Fragment {
     SliderView sliderView;
     CardView welcome_card_layout, addChildCard, allReports, findFamily, addFamily;
 
-    List<Banner> banners;
     private ApiEndPoints apiEndPoints;
 
 

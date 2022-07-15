@@ -56,7 +56,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                         saveName(
                                 cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COLUMN_ID)),
                                 cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_DESCRIPTION)),
-                                cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NAME))
+                                cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_TITLE))
                         );
                     } while (cursor.moveToNext());
                 }

@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.pkasemer.MyFamlinkApp.Models.Name;
+import com.pkasemer.MyFamlinkApp.Models.Case;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +21,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "NamesDB";
     public static final String TABLE_NAME = "names";
     public static final String COLUMN_ID = "id";
-    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_TITLE = "name";
+    public static final String COLUMN_CASE_CATEGORY = "case_category";
+    public static final String COLUMN_LOCATION = "location";
     public static final String COLUMN_DESCRIPTION = "description";
     public static final String COLUMN_STATUS = "status";
 
     //database version
     private static final int DB_VERSION = 2;
 
-    List<Name> nameList;
+    List<Case> caseList;
 
     //Constructor
     public DatabaseHelper(Context context) {
@@ -40,8 +42,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE " + TABLE_NAME
                 + "(" + COLUMN_ID +
-                " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME +
-                " VARCHAR, " + COLUMN_DESCRIPTION+ " VARCHAR, " + COLUMN_STATUS +
+                " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_TITLE +
+                " VARCHAR, "+ COLUMN_CASE_CATEGORY+ " VARCHAR, "+ COLUMN_LOCATION+ " VARCHAR, " + COLUMN_DESCRIPTION+ " VARCHAR, " + COLUMN_STATUS +
                 " TINYINT);";
         db.execSQL(sql);
     }
@@ -55,22 +57,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*
-     * This method is taking three arguments
-     * first one is the name that is to be saved
-     * second one is the description
-     * third one is the status
+     * This method is taking five arguments
      * 0 means the name is synced with the server
      * 1 means the name is not synced with the server
      * */
-    public boolean addName(String name, String description, int status) {
+    public boolean addCase(String title,String casecategory,String location, String description, int status) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-
-        contentValues.put(COLUMN_NAME, name);
+        contentValues.put(COLUMN_TITLE, title);
+        contentValues.put(COLUMN_CASE_CATEGORY, casecategory);
+        contentValues.put(COLUMN_LOCATION, location);
         contentValues.put(COLUMN_DESCRIPTION, description);
         contentValues.put(COLUMN_STATUS, status);
-
-
         db.insert(TABLE_NAME, null, contentValues);
         db.close();
         return true;
@@ -113,22 +111,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<Name> listDBNames() {
+    public List<Case> list_DB_Cases() {
         String sql = "select * from " + TABLE_NAME + " order by "+ COLUMN_ID + " DESC ";
         SQLiteDatabase db = this.getReadableDatabase();
-        nameList = new ArrayList<>();
+        caseList = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor.moveToFirst()) {
             do {
                 String name = cursor.getString(1);
-                String description = cursor.getString(2);
-                int status = Integer.parseInt(cursor.getString(3));
-                nameList.add(new Name(name, description, status));
+                String case_category = cursor.getString(2);
+                String location = cursor.getString(3);
+                String description = cursor.getString(4);
+                int status = Integer.parseInt(cursor.getString(5));
+                caseList.add(new Case(name,case_category,location, description, status));
             }
             while (cursor.moveToNext());
         }
         cursor.close();
-        return nameList;
+        return caseList;
     }
 
     public void deleteReport(String id_str) {

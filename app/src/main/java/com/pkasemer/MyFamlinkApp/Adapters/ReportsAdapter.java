@@ -3,9 +3,6 @@ package com.pkasemer.MyFamlinkApp.Adapters;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,24 +15,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory;
 import com.pkasemer.MyFamlinkApp.HelperClasses.ReportsInterface;
-import com.pkasemer.MyFamlinkApp.Models.Name;
+import com.pkasemer.MyFamlinkApp.Models.Case;
 import com.pkasemer.MyFamlinkApp.R;
 import com.pkasemer.MyFamlinkApp.localDatabase.DatabaseHelper;
 
-import java.text.NumberFormat;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Suleiman on 19/10/16.
@@ -48,7 +36,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private static final String BASE_URL_IMG = "";
 
-    private List<Name> nameModelList;
+    private List<Case> caseModelList;
     DatabaseHelper db;
 
 
@@ -66,9 +54,9 @@ public class ReportsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private ReportsInterface mReportsListener;
 
 
-    public ReportsAdapter(Context context, List<Name> nameModelList, ReportsInterface mReportsListener) {
+    public ReportsAdapter(Context context, List<Case> caseModelList, ReportsInterface mReportsListener) {
         this.context = context;
-        this.nameModelList = nameModelList;
+        this.caseModelList = caseModelList;
         this.mReportsListener = mReportsListener;
     }
 
@@ -101,7 +89,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        Name nameitem = nameModelList.get(position); // Food
+        Case nameitem = caseModelList.get(position); // Food
         db = new DatabaseHelper(holder.itemView.getContext());
 
 
@@ -193,13 +181,13 @@ public class ReportsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        return nameModelList == null ? 0 : nameModelList.size();
+        return caseModelList == null ? 0 : caseModelList.size();
     }
 
     @Override
     public int getItemViewType(int position) {
 
-        return (position == nameModelList.size() - 1 && isLoadingAdded) ?
+        return (position == caseModelList.size() - 1 && isLoadingAdded) ?
                 LOADING : ITEM;
     }
 
@@ -207,19 +195,19 @@ public class ReportsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
 
-    public void remove(Name r) {
-        int position = nameModelList.indexOf(r);
+    public void remove(Case r) {
+        int position = caseModelList.indexOf(r);
         if (position > -1) {
-            nameModelList.remove(position);
+            caseModelList.remove(position);
             notifyItemRemoved(position);
         }
     }
 
-    public void updateFood(Name r) {
-        int position = nameModelList.indexOf(r);
+    public void updateFood(Case r) {
+        int position = caseModelList.indexOf(r);
         if (position > -1) {
             db = new DatabaseHelper(context.getApplicationContext());
-            nameModelList = db.listDBNames();
+            caseModelList = db.list_DB_Cases();
             notifyDataSetChanged();
         }
     }
@@ -227,7 +215,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public void showRetry(boolean show, @Nullable String errorMsg) {
         retryPageLoad = show;
-        notifyItemChanged(nameModelList.size() - 1);
+        notifyItemChanged(caseModelList.size() - 1);
 
         if (errorMsg != null) this.errorMsg = errorMsg;
     }
