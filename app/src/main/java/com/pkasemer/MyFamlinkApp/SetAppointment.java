@@ -9,19 +9,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.pkasemer.MyFamlinkApp.Apis.MovieApi;
-import com.pkasemer.MyFamlinkApp.Apis.MovieService;
+import com.pkasemer.MyFamlinkApp.Apis.ApiBase;
+import com.pkasemer.MyFamlinkApp.Apis.ApiEndPoints;
 import com.pkasemer.MyFamlinkApp.HelperClasses.SharedPrefManager;
 import com.pkasemer.MyFamlinkApp.Models.Appointment;
 import com.pkasemer.MyFamlinkApp.Models.PostResponse;
-import com.pkasemer.MyFamlinkApp.Models.Referal;
 import com.pkasemer.MyFamlinkApp.Models.UserModel;
 
 import java.text.DateFormat;
@@ -39,7 +37,7 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
 
     private EditText editTextName,editText_app_phone,editTextEmail_app,editText_purpose_app;
 
-    private MovieService movieService;
+    private ApiEndPoints apiEndPoints;
 
     Appointment appointment = new Appointment();
     SimpleDateFormat simpleDateFormat;
@@ -58,7 +56,7 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        movieService = MovieApi.getClient(SetAppointment.this).create(MovieService.class);
+        apiEndPoints = ApiBase.getClient(SetAppointment.this).create(ApiEndPoints.class);
 
 
         tvDate = findViewById(R.id.tvDate);
@@ -94,7 +92,7 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
 
 
     private Call<PostResponse> createAppointment() {
-        return movieService.postAppointment(appointment);
+        return apiEndPoints.postAppointment(appointment);
     }
 
     private void saveAppointmentToServer(){

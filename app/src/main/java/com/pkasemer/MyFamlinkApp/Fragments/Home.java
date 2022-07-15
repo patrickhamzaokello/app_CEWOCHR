@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment;
 
 import com.pkasemer.MyFamlinkApp.SetAppointment;
 import com.pkasemer.MyFamlinkApp.AllReports;
-import com.pkasemer.MyFamlinkApp.Apis.MovieApi;
-import com.pkasemer.MyFamlinkApp.Apis.MovieService;
+import com.pkasemer.MyFamlinkApp.Apis.ApiBase;
+import com.pkasemer.MyFamlinkApp.Apis.ApiEndPoints;
 import com.pkasemer.MyFamlinkApp.FindFamily;
 import com.pkasemer.MyFamlinkApp.Models.Banner;
 import com.pkasemer.MyFamlinkApp.R;
@@ -33,7 +33,7 @@ public class Home extends Fragment {
     CardView welcome_card_layout, addChildCard, allReports, findFamily, addFamily;
 
     List<Banner> banners;
-    private MovieService movieService;
+    private ApiEndPoints apiEndPoints;
 
 
     @Override
@@ -58,7 +58,7 @@ public class Home extends Fragment {
         findFamily = view.findViewById(R.id.findFamily);
         addFamily = view.findViewById(R.id.addFamily);
         //init service and load data
-        movieService = MovieApi.getClient(getContext()).create(MovieService.class);
+        apiEndPoints = ApiBase.getClient(getContext()).create(ApiEndPoints.class);
 
 
         addChildCard.setOnClickListener(new View.OnClickListener() {

@@ -7,9 +7,9 @@ import com.google.gson.annotations.SerializedName;
 @Generated("jsonschema2pojo")
 public class Referal {
 
-    @SerializedName("name")
+    @SerializedName("title")
     @Expose
-    private String name;
+    private String title;
     @SerializedName("picture")
     @Expose
     private String picture;
@@ -19,6 +19,9 @@ public class Referal {
     @SerializedName("category_id")
     @Expose
     private String categoryId;
+    @SerializedName("address")
+    @Expose
+    private String address;
     @SerializedName("longitude")
     @Expose
     private Double longitude;
@@ -29,12 +32,12 @@ public class Referal {
     @Expose
     private String reportedbyId;
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = name;
     }
 
     public String getPicture() {
@@ -51,6 +54,14 @@ public class Referal {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCategoryId() {

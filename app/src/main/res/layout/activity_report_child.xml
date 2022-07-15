@@ -21,7 +21,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Child's Full Name"
+            android:hint="Title"
             android:textColorHint="@color/text_input_color"
             android:transitionName="username_input"
             app:boxStrokeColor="@color/text_input_color"
@@ -29,7 +29,7 @@
             app:hintTextColor="@color/text_input_color">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextName"
+                android:id="@+id/editTextTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -43,8 +43,31 @@
 
 
 
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:hint="Case Referral Category"
+                android:layout_marginTop="10dp"
+                android:textColorHint="@color/text_input_color"
+                android:transitionName="username_input"
+                app:boxStrokeColor="@color/text_input_color"
+                app:boxStrokeErrorColor="@color/purple_500"
+                app:hintTextColor="@color/text_input_color"
+                >
 
+                <AutoCompleteTextView
+                    android:id="@+id/auto_complete_referral_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="none"
+                    android:textColor="@color/text_input_color"
+                    />
 
+            </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/report_child_location"
@@ -52,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Address / Location"
+            android:hint="Location"
             android:textColorHint="@color/text_input_color"
             android:transitionName="username_input"
             app:boxStrokeColor="@color/text_input_color"
@@ -68,6 +91,7 @@
 
 
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextDescription_layout"
@@ -99,73 +123,12 @@
 
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Choose Child Referral Category" />
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/support_radio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_input_color"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="Support" />
-
-
-                <RadioButton
-                    android:id="@+id/child_tracing_radio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_input_color"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="Child Tracing" />
-
-                <RadioButton
-                    android:id="@+id/child_reunion_radio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_input_color"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="Child Reunion" />
-
-
-                <RadioButton
-                    android:id="@+id/other_radio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_input_color"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="Other" />
-
-            </RadioGroup>
-
-
-        </LinearLayout>
-
-
-
         <Button
             android:id="@+id/buttonSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:paddingVertical="10dp"
             android:text="Save Record" />
 
 
