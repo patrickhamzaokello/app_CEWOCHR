@@ -14,106 +14,9 @@
         android:padding="20dp">
 
 
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            android:background="#95A8BD"
-            android:fontFamily="@font/roboto_bold"
-            android:padding="20dp"
-            android:text="Date"
-            android:textColor="@color/purple_500"
-            android:textSize="18sp"
-            android:visibility="gone" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btPickDate"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pick A Date"
-            android:textColor="@color/purple_500"
-            android:textAllCaps="false"
-            android:transitionName="account_change"
-            app:layout_constraintStart_toStartOf="parent"
-            app:strokeColor="@color/purple_500"
-            app:strokeWidth="1dp" />
 
 
 
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/report_child_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name"
-            android:textColorHint="@color/purple_500"
-            android:transitionName="username_input"
-            app:boxStrokeColor="@color/purple_500"
-            app:boxStrokeErrorColor="@color/purple_500"
-            app:hintTextColor="@color/purple_500">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/purple_500" />
-
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/report_app_phone"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Phone"
-            android:textColorHint="@color/purple_500"
-            android:transitionName="username_input"
-            app:boxStrokeColor="@color/purple_500"
-            app:boxStrokeErrorColor="@color/purple_500"
-            app:hintTextColor="@color/purple_500">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editText_app_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:textColor="@color/purple_500" />
-
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/report_app_email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Email"
-            android:textColorHint="@color/purple_500"
-            android:transitionName="username_input"
-            app:boxStrokeColor="@color/purple_500"
-            app:boxStrokeErrorColor="@color/purple_500"
-            app:hintTextColor="@color/purple_500">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextEmail_app"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/purple_500" />
-
-
-        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextDescription_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -142,6 +45,64 @@
 
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <TextView
+            android:id="@+id/datevalue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="#95A8BD"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="20dp"
+            android:text="Date"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/timevalue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="#95A8BD"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="20dp"
+            android:text="Time"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btPickDate"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pick A Date"
+            android:textColor="@color/purple_500"
+            android:textAllCaps="false"
+            android:transitionName="account_change"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/purple_500"
+            app:strokeWidth="1dp" />
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/pickTime"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pick Time"
+            android:textColor="@color/purple_500"
+            android:textAllCaps="false"
+            android:transitionName="account_change"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/purple_500"
+            app:strokeWidth="1dp" />
+
+
 
 
         <com.google.android.material.button.MaterialButton

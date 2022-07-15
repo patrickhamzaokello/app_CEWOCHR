@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +13,11 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.timepicker.TimeFormat;
 import com.pkasemer.MyFamlinkApp.Apis.ApiBase;
 import com.pkasemer.MyFamlinkApp.Apis.ApiEndPoints;
 import com.pkasemer.MyFamlinkApp.HelperClasses.SharedPrefManager;
@@ -22,6 +25,7 @@ import com.pkasemer.MyFamlinkApp.Models.Appointment;
 import com.pkasemer.MyFamlinkApp.Models.PostResponse;
 import com.pkasemer.MyFamlinkApp.Models.UserModel;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -30,12 +34,13 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class SetAppointment extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class SetAppointment extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     ActionBar actionBar;
-    TextView tvDate;
-    MaterialButton btPickDate,saveAppointment;
+    TextView datevalue,timevalue;
+    MaterialButton btPickDate,pickTime,saveAppointment;
 
-    private EditText editTextName,editText_app_phone,editTextEmail_app,editText_purpose_app;
+
+    private EditText editText_purpose_app;
 
     private ApiEndPoints apiEndPoints;
 
@@ -59,13 +64,12 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
         apiEndPoints = ApiBase.getClient(SetAppointment.this).create(ApiEndPoints.class);
 
 
-        tvDate = findViewById(R.id.tvDate);
+        datevalue = findViewById(R.id.datevalue);
+        timevalue = findViewById(R.id.timevalue);
         btPickDate = findViewById(R.id.btPickDate);
+        pickTime = findViewById(R.id.pickTime);
         saveAppointment = findViewById(R.id.saveAppointment);
 
-        editTextName = (TextInputEditText) findViewById(R.id.editTextName);
-        editText_app_phone = (TextInputEditText) findViewById(R.id.editText_app_phone);
-        editTextEmail_app = (TextInputEditText) findViewById(R.id.editTextEmail_app);
         editText_purpose_app = (TextInputEditText) findViewById(R.id.editText_purpose_app);
 
 
@@ -75,9 +79,19 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
             @Override
             public void onClick(View v) {
                 // Please note that use your package name here
-                com.pkasemer.MyFamlinkApp.DatePicker mDatePickerDialogFragment;
-                mDatePickerDialogFragment = new com.pkasemer.MyFamlinkApp.DatePicker();
+                AppointmentDatePicker mDatePickerDialogFragment;
+                mDatePickerDialogFragment = new AppointmentDatePicker();
                 mDatePickerDialogFragment.show(getSupportFragmentManager(), "DATE PICK");
+            }
+        });
+
+        pickTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Please note that use your package name here
+                AppointmentTimePicker appointmentTimePicker;
+                appointmentTimePicker = new AppointmentTimePicker();
+                appointmentTimePicker.show(getSupportFragmentManager(), "Pick Time");
             }
         });
 
@@ -100,17 +114,11 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
         progressDialog.setMessage("Saving Name...");
         progressDialog.show();
 
-
-        final String app_name = editTextName.getText().toString().trim();
-        final String app_phone = editText_app_phone.getText().toString().trim();
-        final String app_email = editTextEmail_app.getText().toString().trim();
         final String app_purpose = editText_purpose_app.getText().toString().trim();
 
         UserModel user = SharedPrefManager.getInstance(SetAppointment.this).getUser();
 
-        appointment.setName(app_name);
-        appointment.setPhone(app_phone);
-        appointment.setEmail(app_email);
+
         appointment.setPurpose(app_purpose);
         appointment.setUserid(String.valueOf(user.getId()));
 
@@ -238,13 +246,30 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
         mCalendar.set(Calendar.MONTH, month);
         mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String selectedDate = DateFormat.getDateInstance(DateFormat.FULL).format(mCalendar.getTime());
-        tvDate.setText(selectedDate);
+        datevalue.setText(selectedDate);
 
 
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss aaa z");
+        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd aaa z");
         String dateTime = simpleDateFormat.format(mCalendar.getTime()).toString();
         appointment.setAppointmentDate(dateTime);
 
-        tvDate.setVisibility(View.VISIBLE);
+        datevalue.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hour, int minute) {
+
+        Calendar mCalendar = Calendar.getInstance();
+        mCalendar.set(Calendar.HOUR, hour);
+        mCalendar.set(Calendar.MINUTE, minute);
+
+        simpleDateFormat = new SimpleDateFormat("hh:mm:ss aaa ");
+        String selectedTime = simpleDateFormat.format(mCalendar.getTime()).toString();
+//        appointment.setAppointmentDate(dateTime);
+        timevalue.setText(selectedTime);
+
+//        appointment.setAppointmentDate(dateTime);
+
+        timevalue.setVisibility(View.VISIBLE);
     }
 }

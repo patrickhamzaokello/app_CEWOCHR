@@ -45,7 +45,6 @@ public class  AllReports extends AppCompatActivity implements ReportsInterface {
     Button btnCheckout,btnDeleteAll;
     ActionBar actionBar;
 
-
     //a broadcast to know weather the data is synced or not
     public static final String DATA_SAVED_BROADCAST = "net.simplifiedcoding.datasaved";
     //Broadcast receiver to know the sync status
