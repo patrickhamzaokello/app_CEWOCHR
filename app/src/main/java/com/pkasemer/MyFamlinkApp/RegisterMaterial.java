@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,9 +33,8 @@ public class RegisterMaterial extends AppCompatActivity {
 
     TextView logoText;
     Button callLogIN, register_btn;
-    TextInputLayout username_layout, password_layout;
 
-    TextInputEditText inputTextFullname, inputTextUsername, inputTextEmail, inputTextPhone,inputTextUserAddress, inputTextPassword, inputTextConfirmPassword;
+    TextInputEditText inputTextFullname, inputTextEmail, inputTextPhone, inputTextAddress, inputTextPassword, inputTextConfirmPassword;
     RadioGroup radioGroupGender;
 
     @Override
@@ -44,8 +44,6 @@ public class RegisterMaterial extends AppCompatActivity {
         setContentView(R.layout.activity_register_material);
 
         ActionBar actionBar = getSupportActionBar(); // or getActionBar();
-        getSupportActionBar().setTitle("My new title"); // set the top title
-        String title = actionBar.getTitle().toString(); // get the title
         actionBar.hide();
 
         //if the user is already logged in we will directly start the profile activity
@@ -63,13 +61,12 @@ public class RegisterMaterial extends AppCompatActivity {
         register_btn = findViewById(R.id.register_btn);
         logoText = findViewById(R.id.register_welcomeback);
 
-        username_layout = findViewById(R.id.login_username);
-        password_layout = findViewById(R.id.login_password);
 
         //get text from input boxes
         inputTextFullname = findViewById(R.id.inputTextFullname);
-        inputTextUsername = findViewById(R.id.inputTextUsername);
+        inputTextEmail = findViewById(R.id.inputTextEmail);
         inputTextPhone = findViewById(R.id.inputTextPhone);
+        inputTextAddress = findViewById(R.id.inputTextAddress);
         inputTextPassword = findViewById(R.id.inputTextPassword);
         inputTextConfirmPassword = findViewById(R.id.inputTextConfirmPassword);
 
@@ -83,20 +80,7 @@ public class RegisterMaterial extends AppCompatActivity {
         callLogIN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //if user pressed on login
-                //we will open the login screen
                 Intent intent = new Intent(RegisterMaterial.this, LoginMaterial.class);
-
-//                Pair[] pairs = new Pair[6];
-//                pairs[0] = new Pair<View, String>(logoText,"logo_text");
-//                pairs[1] = new Pair<View, String>(sloganText,"logo_desc");
-//                pairs[2] = new Pair<View, String>(username_layout,"username_input");
-//                pairs[3] = new Pair<View, String>(password_layout,"password_input");
-//                pairs[4] = new Pair<View, String>(register_btn,"account_button");
-//                pairs[5] = new Pair<View, String>(callLogIN,"account_change");
-//
-//                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterMaterial.this, pairs);
-//                startActivity(intent, options.toBundle());
                 startActivity(intent);
             }
         });
@@ -107,17 +91,12 @@ public class RegisterMaterial extends AppCompatActivity {
 
     private void registerUser() {
         final String full_name = inputTextFullname.getText().toString().trim();
-        final String user_name = inputTextUsername.getText().toString().trim();
         final String user_email = inputTextEmail.getText().toString().trim();
         final String user_phone = inputTextPhone.getText().toString().trim();
-        final String location_address  = inputTextUserAddress.getText().toString().trim();
+        final String user_address = inputTextAddress.getText().toString().trim();
         final String user_password = inputTextPassword.getText().toString().trim();
         final String confirm_password = inputTextConfirmPassword.getText().toString().trim();
 
-//        final String gender = ((RadioButton) findViewById(radioGroupGender.getCheckedRadioButtonId())).getText().toString();
-
-
-        //first we will do the validations
 
         if (TextUtils.isEmpty(full_name)) {
             inputTextFullname.setError("Enter Full Name");
@@ -125,28 +104,13 @@ public class RegisterMaterial extends AppCompatActivity {
             return;
         }
 
-        if (TextUtils.isEmpty(user_name)) {
-            inputTextUsername.setError("Please enter username");
-            inputTextUsername.requestFocus();
-            return;
-        }
 
-        if (TextUtils.isEmpty(user_email)) {
-            inputTextEmail.setError("Please enter your email");
-            inputTextEmail.requestFocus();
-            return;
-        }
-
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(user_email).matches()) {
-            inputTextEmail.setError("Enter a valid email");
-            inputTextEmail.requestFocus();
-            return;
-        }
-
-        if (TextUtils.isEmpty(user_password)) {
-            inputTextPassword.setError("Enter a password");
-            inputTextPassword.requestFocus();
-            return;
+        if (!(TextUtils.isEmpty(user_email))) {
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(user_email).matches()) {
+                inputTextEmail.setError("Enter a valid email");
+                inputTextEmail.requestFocus();
+                return;
+            }
         }
 
         if (TextUtils.isEmpty(user_phone)) {
@@ -155,9 +119,27 @@ public class RegisterMaterial extends AppCompatActivity {
             return;
         }
 
-        if (TextUtils.isEmpty(location_address)) {
-            inputTextUserAddress.setError("Enter Your Location Address");
-            inputTextUserAddress.requestFocus();
+        if (user_phone.length() > 10) {
+            inputTextPhone.setError("Phone Number is invalid, Use format 07xxxxxxxx");
+            inputTextPhone.requestFocus();
+            return;
+        }
+        if (user_phone.length() < 10) {
+            inputTextPhone.setError("Enter a valid 10 digit Phone Number");
+            inputTextPhone.requestFocus();
+            return;
+        }
+
+
+        if (TextUtils.isEmpty(user_address)) {
+            inputTextAddress.setError("Enter you Address");
+            inputTextAddress.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(user_password)) {
+            inputTextPassword.setError("Enter a password");
+            inputTextPassword.requestFocus();
             return;
         }
 
@@ -182,11 +164,10 @@ public class RegisterMaterial extends AppCompatActivity {
                 //creating request parameters
                 HashMap<String, String> params = new HashMap<>();
                 params.put("full_name", full_name);
-                params.put("username", user_name);
                 params.put("email", user_email);
-                params.put("user_phone", user_phone);
+                params.put("phone_number", user_phone);
                 params.put("password", user_password);
-                params.put("location_address", location_address);
+                params.put("location_address", user_address);
 
                 //returing the response
                 return requestHandler.sendPostRequest(URLs.URL_REGISTER, params);
@@ -206,7 +187,7 @@ public class RegisterMaterial extends AppCompatActivity {
                 //hiding the progressbar after completion
                 progressBar.setVisibility(View.GONE);
 
-                if(s.isEmpty()){
+                if (s.isEmpty()) {
                     //show network error
                     showErrorAlert();
                     return;
@@ -219,7 +200,6 @@ public class RegisterMaterial extends AppCompatActivity {
 
                     //if no error in response
                     if (!obj.getBoolean("error")) {
-//                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
                         //getting the user from the response
                         JSONObject userJson = obj.getJSONObject("user");
@@ -228,7 +208,6 @@ public class RegisterMaterial extends AppCompatActivity {
                         UserModel userModel = new UserModel(
                                 userJson.getInt("id"),
                                 userJson.getString("fullname"),
-                                userJson.getString("username"),
                                 userJson.getString("email"),
                                 userJson.getString("phone"),
                                 userJson.getString("address"),
@@ -242,8 +221,7 @@ public class RegisterMaterial extends AppCompatActivity {
                         finish();
                         startActivity(new Intent(getApplicationContext(), RootActivity.class));
                     } else {
-//                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                        showUserExists();
+                        showUserExists(obj.getString("message"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -265,11 +243,11 @@ public class RegisterMaterial extends AppCompatActivity {
                 .show();
     }
 
-    private void showUserExists() {
+    private void showUserExists( String message) {
 
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("User already Exists")
-                .setContentText("Try different Username and Email")
+                .setTitleText("Error")
+                .setContentText(message)
                 .show();
     }
 

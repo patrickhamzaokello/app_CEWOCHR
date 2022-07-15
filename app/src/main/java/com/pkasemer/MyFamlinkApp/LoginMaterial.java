@@ -75,17 +75,6 @@ public class LoginMaterial extends AppCompatActivity {
             public void onClick(View view) {
                 //open register screen
                 Intent intent = new Intent(LoginMaterial.this, RegisterMaterial.class);
-//                Pair[] pairs = new Pair[6];
-//                pairs[0] = new Pair<View, String>(image,"logo_image");
-//                pairs[1] = new Pair<View, String>(logoText,"logo_text");
-//                pairs[2] = new Pair<View, String>(sloganText,"logo_desc");
-//                pairs[3] = new Pair<View, String>(username_layout,"username_input");
-//                pairs[4] = new Pair<View, String>(password_layout,"password_input");
-//                pairs[5] = new Pair<View, String>(loginbtn,"account_button");
-//                pairs[6] = new Pair<View, String>(callSignUp,"account_change");
-//
-//                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginMaterial.this, pairs);
-//                startActivity(intent, options.toBundle());
                 startActivity(intent);
             }
         });
@@ -151,7 +140,6 @@ public class LoginMaterial extends AppCompatActivity {
                         UserModel userModel = new UserModel(
                                 userJson.getInt("id"),
                                 userJson.getString("fullname"),
-                                userJson.getString("username"),
                                 userJson.getString("email"),
                                 userJson.getString("phone"),
                                 userJson.getString("address"),

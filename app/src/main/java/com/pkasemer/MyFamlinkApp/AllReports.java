@@ -32,7 +32,7 @@ import java.util.Locale;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class AllReports extends AppCompatActivity implements ReportsInterface {
+public class  AllReports extends AppCompatActivity implements ReportsInterface {
 
     private DatabaseHelper db;
     List<Name> nameList;

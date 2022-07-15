@@ -5,10 +5,9 @@ public class UserModel {
     private int id;
     private String fullname, username, email, phone,address, profileimage;
 
-    public UserModel(int id, String fullname, String username, String email, String phone, String address, String profileimage) {
+    public UserModel(int id, String fullname, String email, String phone, String address, String profileimage) {
         this.id = id;
         this.fullname = fullname;
-        this.username = username;
         this.email = email;
         this.phone = phone;
         this.address = address;
