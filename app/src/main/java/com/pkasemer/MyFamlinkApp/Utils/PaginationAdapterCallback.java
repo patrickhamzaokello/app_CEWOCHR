@@ -8,4 +8,5 @@ package com.pkasemer.MyFamlinkApp.Utils;
 public interface PaginationAdapterCallback {
 
     void retryPageLoad();
+    void requestfailed();
 }

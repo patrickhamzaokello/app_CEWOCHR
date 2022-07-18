@@ -17,7 +17,7 @@
     <string name="title_home">Home</string>f
     <string name="title_profile">Profile</string>
     <string name="title_search">Refer</string>
-    <string name="title_Appointment">Appointments</string>
+    <string name="title_feedback">Feedbacks</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="my_api_key">c13947fd4f4f71afeffbb9214a33b3c9</string>

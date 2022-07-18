@@ -55,7 +55,7 @@ public class Profile extends Fragment {
         UserModel userModel = SharedPrefManager.getInstance(getContext()).getUser();
 
         //setting the values to the textviews
-        textViewUsername.setText(userModel.getUsername());
+        textViewUsername.setText(userModel.getFullname());
         textViewEmail.setText(userModel.getEmail());
 
         //when the user presses logout button

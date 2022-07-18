@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="#00000000"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="1dp">
+
+    <RelativeLayout
+        android:id="@+id/order_layout_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="20dp"
+       >
+
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black"
+            tools:text="Hello we are the one who is listening to your name right now Hello we are the one who is listening to your name right now" />
+
+
+        <TextView
+            android:id="@+id/order_tracking_lable"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/message"
+            android:layout_marginRight="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Date"
+            android:textColor="@color/light_grey"
+            android:textSize="12sp"
+
+            />
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/message"
+            android:layout_toRightOf="@id/order_tracking_lable"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            tools:text="UMKK34099112" />
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

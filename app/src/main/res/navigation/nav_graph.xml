@@ -16,8 +16,8 @@
     <fragment
         android:id="@+id/navigation_message"
         android:name="com.pkasemer.MyFamlinkApp.Fragments.Message"
-        android:label="@string/title_Appointment"
-        tools:layout="@layout/fragment_view_appointments" />
+        android:label="@string/title_feedback"
+        tools:layout="@layout/fragment_view_messages" />
 
 
     <fragment

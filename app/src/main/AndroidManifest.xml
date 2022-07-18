@@ -20,7 +20,7 @@
         <activity
             android:name=".WelcomeScreen"
             android:exported="false" />
-        <activity android:name=".FindFamily" />
+        <activity android:name=".AboutUs" />
         <activity android:name=".SetAppointment" />
         <activity android:name=".AllReports" />
 

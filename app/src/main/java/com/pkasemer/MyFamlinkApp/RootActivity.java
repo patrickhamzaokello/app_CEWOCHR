@@ -81,7 +81,7 @@ public class RootActivity extends AppCompatActivity {
     };
 
     private void updatecartCount() {
-        int mycartcount = 1;
+        int mycartcount = 0;
         if(mycartcount != 0){
             navView.getOrCreateBadge(R.id.navigation_message).setNumber(mycartcount);
             navView.getOrCreateBadge(R.id.navigation_message).setVisible(true);

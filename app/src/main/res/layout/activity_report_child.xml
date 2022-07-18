@@ -16,6 +16,22 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create a Case"
+            android:textSize="22sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/purple_200"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All cases are sent directly to ou office. feedbacks are provided after a case review"
+            android:textSize="18sp"
+            android:textColor="@color/purple_200"
+            />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/report_child_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

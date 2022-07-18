@@ -10,8 +10,8 @@
     <item
         android:id="@+id/navigation_message"
         android:enabled="true"
-        android:icon="@drawable/ic_addfamilymember"
-        android:title="@string/title_Appointment" />
+        android:icon="@drawable/ic_baseline_email_24"
+        android:title="@string/title_feedback" />
     <item
         android:id="@+id/navigation_profile"
         android:enabled="true"

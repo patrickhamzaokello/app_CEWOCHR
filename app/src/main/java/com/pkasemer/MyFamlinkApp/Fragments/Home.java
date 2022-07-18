@@ -13,12 +13,10 @@ import com.pkasemer.MyFamlinkApp.SetAppointment;
 import com.pkasemer.MyFamlinkApp.AllReports;
 import com.pkasemer.MyFamlinkApp.Apis.ApiBase;
 import com.pkasemer.MyFamlinkApp.Apis.ApiEndPoints;
-import com.pkasemer.MyFamlinkApp.FindFamily;
+import com.pkasemer.MyFamlinkApp.AboutUs;
 import com.pkasemer.MyFamlinkApp.R;
 import com.pkasemer.MyFamlinkApp.ReportChild;
 import com.smarteist.autoimageslider.SliderView;
-
-import java.util.List;
 
 
 public class Home extends Fragment {
@@ -90,7 +88,7 @@ public class Home extends Fragment {
         findFamily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(), FindFamily.class);
+                Intent i = new Intent(getContext(), AboutUs.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
             }
