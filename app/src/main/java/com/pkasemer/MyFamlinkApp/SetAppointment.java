@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
@@ -103,6 +104,29 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
             @Override
             public void onClick(View v) {
                 // Please note that use your package name here
+                final String app_purpose = editText_purpose_app.getText().toString();
+                final String app_date = datevalue.getText().toString();
+                final String app_time = timevalue.getText().toString();
+
+
+                //validating inputs
+                if (TextUtils.isEmpty(app_purpose)) {
+                    editText_purpose_app.setError("Please enter appointment purpose");
+                    editText_purpose_app.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(app_date)) {
+                    datevalue.setError("Please set appointment Date");
+                    datevalue.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(app_time)) {
+                    timevalue.setError("Please set appointment Time");
+                    timevalue.requestFocus();
+                    return;
+                }
                 saveAppointmentToServer();
             }
         });
@@ -153,8 +177,10 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
 
                                         sDialog.dismissWithAnimation();
 
-                                        Intent i = new Intent(SetAppointment.this, RootActivity.class);
-                                        startActivity(i);
+                                        editText_purpose_app.setText("");
+                                        datevalue.setText("");
+                                        timevalue.setText("");
+
                                     }
                                 }).show();
 
@@ -164,7 +190,7 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
 //                        ShowOrderFailed();
                         new SweetAlertDialog(SetAppointment.this, SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText("Error")
-                                .setContentText("Try again")
+                                .setContentText(postResponse.getMessage() + "Try again")
                                 .setConfirmText("OK")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
@@ -172,8 +198,6 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
 
                                         sDialog.dismissWithAnimation();
 
-                                        Intent i = new Intent(SetAppointment.this, RootActivity.class);
-                                        startActivity(i);
                                     }
                                 }).show();
 
@@ -196,8 +220,6 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
 
                                     sDialog.dismissWithAnimation();
 
-                                    Intent i = new Intent(SetAppointment.this, RootActivity.class);
-                                    startActivity(i);
                                 }
                             }).show();
                     return;
@@ -224,8 +246,6 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
 
                                 sDialog.dismissWithAnimation();
 
-                                Intent i = new Intent(SetAppointment.this, RootActivity.class);
-                                startActivity(i);
                             }
                         }).show();
             }
