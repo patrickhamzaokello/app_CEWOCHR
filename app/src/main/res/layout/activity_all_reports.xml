@@ -100,7 +100,6 @@
                 android:id="@+id/reports_main_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/rootbg"
                 android:clipToPadding="false"
                 android:paddingTop="10dp"
                 android:paddingBottom="@dimen/activity_margin_content" />

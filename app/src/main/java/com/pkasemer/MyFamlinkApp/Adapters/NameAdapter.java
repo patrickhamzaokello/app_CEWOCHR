@@ -35,7 +35,7 @@ public class NameAdapter extends ArrayAdapter<Case> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         //getting listview itmes
-        View listViewItem = inflater.inflate(R.layout.names, null, true);
+        View listViewItem = inflater.inflate(R.layout.case_design, null, true);
         TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);
         TextView child_description = (TextView) listViewItem.findViewById(R.id.child_description);
         ImageView imageViewStatus = (ImageView) listViewItem.findViewById(R.id.imageViewStatus);

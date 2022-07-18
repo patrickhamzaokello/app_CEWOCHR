@@ -235,8 +235,8 @@ public class ReportChild extends AppCompatActivity {
         db.addCase(title,casecategory,location, description, status);
     }
 
-    public void caseSavedlocally(String title, String casecategory, String location, String description, int saved_status) {
-        saveNameToLocalStorage(title, description,casecategory,location, NAME_NOT_SYNCED_WITH_SERVER);
+    public void caseSavedlocally(String title, String casecategory, String location, String description, int NAME_NOT_SYNCED_WITH_SERVER) {
+        saveNameToLocalStorage(title, casecategory,location,description, NAME_NOT_SYNCED_WITH_SERVER);
 
         new SweetAlertDialog(ReportChild.this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText("Case not Submitted")

@@ -81,7 +81,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @NonNull
     private RecyclerView.ViewHolder getViewHolder(ViewGroup parent, LayoutInflater inflater) {
         RecyclerView.ViewHolder viewHolder;
-        View v1 = inflater.inflate(R.layout.names, parent, false);
+        View v1 = inflater.inflate(R.layout.case_design, parent, false);
         viewHolder = new CartDesignVH(v1);
         return viewHolder;
     }
@@ -100,56 +100,15 @@ public class ReportsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 movieVH.cart_product_name.setText(nameitem.getName());
 
                 movieVH.child_description.setText(nameitem.getDescription());
+                movieVH.child_category.setText(nameitem.getCase_category());
+                movieVH.case_location.setText("location: "+nameitem.getLocation());
 
-                movieVH.cart_item_Rating.setText("Male");
 
                 if (nameitem.getStatus() == 0)
                     movieVH.imageViewStatus.setBackgroundResource(R.drawable.ic_offline);
                 else
                     movieVH.imageViewStatus.setBackgroundResource(R.drawable.ic_success);
 
-//                Glide
-//                        .with(context)
-//                        .load(BASE_URL_IMG + nameitem.getMenuImage())
-//                        .listener(new RequestListener<Drawable>() {
-//                            @Override
-//                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-//                                movieVH.mProgress.setVisibility(View.GONE);
-//                                return false;
-//                            }
-//
-//                            @Override
-//                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-//                                movieVH.mProgress.setVisibility(View.GONE);
-//                                return false;
-//                            }
-//
-//                        })
-//                        .diskCacheStrategy(DiskCacheStrategy.ALL)   // cache both original & resized image
-//                        .centerCrop()
-//                        .transition(withCrossFade(factory))
-//                        .into(movieVH.cart_product_image);
-
-
-                //show toast on click of show all button
-                movieVH.cart_product_image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-//                        Intent i = new Intent(context.getApplicationContext(), MyMenuDetail.class);
-//                        //PACK DATA
-//                        i.putExtra("SENDER_KEY", "MenuDetails");
-//                        i.putExtra("selectMenuId", foodDBModel.getMenuId());
-//                        i.putExtra("category_selected_key", foodDBModel.getMenuTypeId());
-//                        context.startActivity(i);
-                    }
-                });
-
-                movieVH.btnCartItemRemove.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mReportsListener.deletemenuitem(String.valueOf(nameitem.getName()), nameitem);
-                    }
-                });
 
 
                 break;
@@ -222,21 +181,16 @@ public class ReportsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
     protected class CartDesignVH extends RecyclerView.ViewHolder {
-        private TextView id_strView;
-        private TextView cart_product_name, child_description,  cart_item_Rating;
-        private ImageView cart_product_image, imageViewStatus;
-        private Button btnCartItemRemove, cart_addBtn, cart_removeBtn;
-        private ProgressBar mProgress;
+        private TextView cart_product_name, child_description,child_category,case_location;
+        private ImageView imageViewStatus;
 
         public CartDesignVH(View itemView) {
             super(itemView);
             cart_product_name = itemView.findViewById(R.id.textViewName);
             child_description = itemView.findViewById(R.id.child_description);
-            cart_product_image = itemView.findViewById(R.id.cart_product_image);
             imageViewStatus = itemView.findViewById(R.id.imageViewStatus);
-            mProgress = (ProgressBar) itemView.findViewById(R.id.cart_progress);
-            cart_item_Rating = itemView.findViewById(R.id.cart_item_Rating);
-            btnCartItemRemove = itemView.findViewById(R.id.btnCartItemRemove);
+            child_category = itemView.findViewById(R.id.child_category);
+            case_location = itemView.findViewById(R.id.case_location);
         }
     }
 

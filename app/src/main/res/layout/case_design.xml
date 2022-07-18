@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+
+        >
+
+
+        <LinearLayout
+            android:id="@+id/carddetailscard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Missing Child"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:id="@+id/child_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="left"
+                    android:includeFontPadding="false"
+                    android:textSize="18sp"
+                    android:text="Brief Description"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/carddetailscard"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+
+
+            <ImageView
+                android:id="@+id/imageViewStatus"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:background="@drawable/ic_success" />
+
+
+            <TextView
+                android:id="@+id/child_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="#FFEB3B"
+                android:fontFamily="@font/roboto_regular"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                android:text="Child"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+
+
+
+            <TextView
+                android:id="@+id/case_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="#009688"
+                android:fontFamily="@font/roboto_regular"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="Child"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
