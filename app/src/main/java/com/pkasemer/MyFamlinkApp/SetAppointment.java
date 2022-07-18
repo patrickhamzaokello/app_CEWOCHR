@@ -34,11 +34,10 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class SetAppointment extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class SetAppointment extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     ActionBar actionBar;
-    TextView datevalue,timevalue;
-    MaterialButton btPickDate,pickTime,saveAppointment;
-
+    MaterialButton saveAppointment;
+    EditText datevalue, timevalue;
 
     private EditText editText_purpose_app;
 
@@ -56,7 +55,7 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
         actionBar = getSupportActionBar(); // or getActionBar();
         actionBar.setTitle("Set Appointment");
         // add back arrow to toolbar
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
@@ -66,16 +65,12 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
 
         datevalue = findViewById(R.id.datevalue);
         timevalue = findViewById(R.id.timevalue);
-        btPickDate = findViewById(R.id.btPickDate);
-        pickTime = findViewById(R.id.pickTime);
         saveAppointment = findViewById(R.id.saveAppointment);
 
         editText_purpose_app = (TextInputEditText) findViewById(R.id.editText_purpose_app);
 
 
-
-
-        btPickDate.setOnClickListener(new View.OnClickListener() {
+        datevalue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Please note that use your package name here
@@ -85,13 +80,22 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
             }
         });
 
-        pickTime.setOnClickListener(new View.OnClickListener() {
+        timevalue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Please note that use your package name here
-                AppointmentTimePicker appointmentTimePicker;
-                appointmentTimePicker = new AppointmentTimePicker();
-                appointmentTimePicker.show(getSupportFragmentManager(), "Pick Time");
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(SetAppointment.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        timevalue.setText(selectedHour + ":" + selectedMinute);
+                        appointment.setTime(selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.show();
             }
         });
 
@@ -109,9 +113,9 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
         return apiEndPoints.postAppointment(appointment);
     }
 
-    private void saveAppointmentToServer(){
+    private void saveAppointmentToServer() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Saving Name...");
+        progressDialog.setMessage("Submitting Appointment...");
         progressDialog.show();
 
         final String app_purpose = editText_purpose_app.getText().toString().trim();
@@ -140,8 +144,8 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
                         //if there is a success
                         //storing the name to sqlite with status synced
                         new SweetAlertDialog(SetAppointment.this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Booked")
-                                .setContentText("Appointment set successfully")
+                                .setTitleText("Submitted")
+                                .setContentText("Appointment has been sent successfully")
                                 .setConfirmText("OK")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
@@ -177,7 +181,7 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
 
 
                 } else {
-                    Log.i("Referral Response null", "Order is null Try Again: ");
+                    Log.i("Appointment", "Appointment is null Try Again: ");
 
                     //if there is some error
                     //saving the name to sqlite with status unsynced
@@ -207,7 +211,7 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
                 progressDialog.dismiss();
 
                 t.printStackTrace();
-                Log.i("Order Failed", "Order Failed Try Again: " + t);
+                Log.i("Appointment Failed", "Appointment Failed Try Again: " + t);
                 //on error storing the name to sqlite with status unsynced
 
                 new SweetAlertDialog(SetAppointment.this, SweetAlertDialog.ERROR_TYPE)
@@ -228,8 +232,6 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
         });
 
 
-
-
     }
 
 
@@ -247,29 +249,8 @@ public class SetAppointment extends AppCompatActivity implements DatePickerDialo
         mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String selectedDate = DateFormat.getDateInstance(DateFormat.FULL).format(mCalendar.getTime());
         datevalue.setText(selectedDate);
-
-
         simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd aaa z");
-        String dateTime = simpleDateFormat.format(mCalendar.getTime()).toString();
-        appointment.setAppointmentDate(dateTime);
-
-        datevalue.setVisibility(View.VISIBLE);
+        appointment.setAppointmentDate(selectedDate);
     }
 
-    @Override
-    public void onTimeSet(TimePicker view, int hour, int minute) {
-
-        Calendar mCalendar = Calendar.getInstance();
-        mCalendar.set(Calendar.HOUR, hour);
-        mCalendar.set(Calendar.MINUTE, minute);
-
-        simpleDateFormat = new SimpleDateFormat("hh:mm:ss aaa ");
-        String selectedTime = simpleDateFormat.format(mCalendar.getTime()).toString();
-//        appointment.setAppointmentDate(dateTime);
-        timevalue.setText(selectedTime);
-
-//        appointment.setAppointmentDate(dateTime);
-
-        timevalue.setVisibility(View.VISIBLE);
-    }
 }

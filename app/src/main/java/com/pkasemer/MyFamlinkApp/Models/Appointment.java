@@ -11,15 +11,9 @@ public class Appointment {
     @SerializedName("userid")
     @Expose
     private String userid;
-    @SerializedName("name")
+    @SerializedName("time")
     @Expose
-    private String name;
-    @SerializedName("email")
-    @Expose
-    private String email;
-    @SerializedName("phone")
-    @Expose
-    private String phone;
+    private String time;
     @SerializedName("purpose")
     @Expose
     private String purpose;
@@ -35,29 +29,14 @@ public class Appointment {
         this.userid = userid;
     }
 
-    public String getName() {
-        return name;
+    public String getTime() {
+        return time;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String getPurpose() {
         return purpose;

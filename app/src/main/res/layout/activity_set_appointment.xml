@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,8 +13,21 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create an appointment"
+            android:textSize="22sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/purple_200"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All appointments are reviewed on time and feedbacks given"
+            android:textSize="18sp"
+            android:textColor="@color/purple_200"
+            />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -22,7 +35,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:hint="Purpose of the appointment"
             android:textColorHint="@color/purple_500"
@@ -47,62 +60,42 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
-        <TextView
-            android:id="@+id/datevalue"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/datevalueLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
-            android:background="#95A8BD"
-            android:fontFamily="@font/roboto_bold"
-            android:padding="20dp"
-            android:text="Date"
-            android:textColor="@color/purple_500"
-            android:textSize="18sp" />
+            android:hint="Set Date"
+            android:textColorHint="@color/purple_500">
 
-        <TextView
-            android:id="@+id/timevalue"
+            <!--this is the actual edit text which takes the input-->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/datevalue"
+                android:layout_width="match_parent"
+                android:textColor="@color/purple_500"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
-            android:background="#95A8BD"
-            android:fontFamily="@font/roboto_bold"
-            android:padding="20dp"
-            android:text="Time"
-            android:textColor="@color/purple_500"
-            android:textSize="18sp" />
+            android:hint="Set Time"
+            android:textColorHint="@color/purple_500">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btPickDate"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pick A Date"
-            android:textColor="@color/purple_500"
-            android:textAllCaps="false"
-            android:transitionName="account_change"
-            app:layout_constraintStart_toStartOf="parent"
-            app:strokeColor="@color/purple_500"
-            app:strokeWidth="1dp" />
+            <!--this is the actual edit text which takes the input-->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/timevalue"
+                android:layout_width="match_parent"
+                android:textColor="@color/purple_500"
+                android:layout_height="wrap_content" />
 
-
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/pickTime"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pick Time"
-            android:textColor="@color/purple_500"
-            android:textAllCaps="false"
-            android:transitionName="account_change"
-            app:layout_constraintStart_toStartOf="parent"
-            app:strokeColor="@color/purple_500"
-            app:strokeWidth="1dp" />
-
-
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.button.MaterialButton
@@ -110,10 +103,11 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:backgroundTint="#475494"
             android:fontFamily="@font/roboto_bold"
-            android:layout_marginTop="30dp"
             android:gravity="center"
+            android:paddingVertical="15dp"
             android:text="Save Appointment"
             android:textAllCaps="false"
             android:textColor="@color/white"

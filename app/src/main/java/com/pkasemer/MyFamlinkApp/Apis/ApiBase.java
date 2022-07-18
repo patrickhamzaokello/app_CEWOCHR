@@ -61,7 +61,7 @@ public class ApiBase {
             retrofit = new Retrofit.Builder()
                     .client(buildClient(context))
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("http://192.168.1.113:8080/projects/myfamLinkApp/mobile/api/v1/")
+                    .baseUrl("http://192.168.0.107:8080/projects/myfamLinkApp/mobile/api/v1/")
 //                    .baseUrl("http://famlink.kakebe.com/mobile/api/v1/")
                     .build();
         }
