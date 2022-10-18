@@ -54,7 +54,7 @@ public class ReportChild extends AppCompatActivity {
     private ApiEndPoints apiEndPoints;
 
     Referal referal = new Referal();
-    String[] referal_types = {"Support", "Tracking", "Child Reunion", "Other"};
+    String[] referal_types = {"Support", "Tracing", "Child Reunion", "Other"};
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
     String choice;

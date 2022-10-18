@@ -34,4 +34,7 @@
 
     <string name="cartcoutAction">cartmsg</string>
     <string name="cartCount">cartcount</string>
+    <string name="powered_by_kakebe_technologies">Powered by Kakebe Technologies</string>
+    <string name="learn_more_privacy_famlink_com_2022">Learn more @ famlink.com, 2022</string>
+    <string name="by_continuing_you_indicate_that_you_agree_to_famlink_app_terms_of_service_and_privacy_policy">By continuing you indicate that you agree to FamLink App Terms of Service and Privacy Policy</string>
 </resources>

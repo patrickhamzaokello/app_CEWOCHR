@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_black"
                 android:text="Login"
-                android:textColor="@color/black"
+                android:textColor="@color/purple_500"
                 android:textSize="30sp"
                 android:transitionName="logo_text"
 
@@ -67,7 +67,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:includeFontPadding="false"
                 android:text="Sign into your account to continue with famlink App"
-                android:textColor="@color/light_black"
+                android:textColor="@color/purple_500"
                 android:textSize="18sp"
                 android:transitionName="logo_desc" />
 
@@ -86,11 +86,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone / Email"
-                    android:textColorHint="@color/black"
+                    android:textColorHint="@color/purple_500"
                     android:transitionName="username_input"
-                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeColor="@color/purple_500"
                     app:boxStrokeErrorColor="@color/purple_500"
-                    app:hintTextColor="@color/black">
+                    app:hintTextColor="@color/purple_500">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTextUsername"
@@ -98,7 +98,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="textAutoComplete"
 
-                        android:textColor="@color/black" />
+                        android:textColor="@color/purple_500" />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -110,22 +110,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:hint="Password"
-                    android:textColorHint="@color/black"
+                    android:textColorHint="@color/purple_500"
                     android:transitionName="password_input"
-                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeColor="@color/purple_500"
                     app:boxStrokeErrorColor="@color/purple_500"
-                    app:endIconTint="@color/black"
-                    app:hintTextColor="@color/black"
+                    app:endIconTint="@color/purple_500"
+                    app:hintTextColor="@color/purple_500"
                     app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="@color/black">
+                    app:passwordToggleTint="@color/purple_500">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTextPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:textColor="@color/black"
-                        app:endIconTint="@color/black"
+                        android:textColor="@color/purple_500"
+                        app:endIconTint="@color/purple_500"
 
                         />
 
@@ -168,7 +168,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/roboto_regular"
                 android:gravity="center"
-                android:text="By continuing you indicate that you agree to Famlink App  Terms of Service and Privacy Policy"
+                android:text="@string/by_continuing_you_indicate_that_you_agree_to_famlink_app_terms_of_service_and_privacy_policy"
                 android:textColor="@color/light_black"
                 android:textSize="12dp" />
 
@@ -178,20 +178,21 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/roboto_regular"
                 android:gravity="center"
-                android:text="Learn more @ famlinkapp.com, 2022"
+                android:text="@string/learn_more_privacy_famlink_com_2022"
                 android:textColor="@color/light_black"
                 android:textSize="12dp" />
 
             <TextView
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
-                android:fontFamily="@font/roboto_regular"
-                android:gravity="center"
-                android:text="Powered by Kakebe Technologies"
                 android:textColor="@color/light_black"
-                android:textSize="5dp" />
+                android:textSize="5dp"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/powered_by_kakebe_technologies"
+                />
 
         </LinearLayout>
 

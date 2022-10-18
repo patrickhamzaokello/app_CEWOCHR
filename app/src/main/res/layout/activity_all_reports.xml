@@ -11,89 +11,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:id="@+id/procceed_checkout_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:background="@color/purple_200"
-            android:orientation="vertical"
-            android:padding="20dp"
-
-            >
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="Total Records"
-                    android:textColor="@color/white" />
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-                    <TextView
-                        android:id="@+id/grandtotalvalue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="43"
-                        android:textColor="@color/white"
-                        android:textSize="20dp" />
-                </RelativeLayout>
-
-
-            </LinearLayout>
-
-
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCheckout"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#475494"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="center"
-                android:text="Refresh"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:strokeWidth="0dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnDeleteAll"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Clear Records"
-                android:textColor="@color/white"
-                android:textAllCaps="false"
-                android:transitionName="account_change"
-                app:layout_constraintStart_toStartOf="parent"
-                app:strokeColor="@color/white"
-                app:strokeWidth="1dp" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/reports_items_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/procceed_checkout_layout"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -112,7 +34,6 @@
                 android:layout_gravity="center" />
 
         </LinearLayout>
-
 
 
 

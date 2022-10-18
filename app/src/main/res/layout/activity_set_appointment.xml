@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".SetAppointment">
 
 
@@ -67,7 +68,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Set Date"
-            android:textColorHint="@color/purple_500">
+            android:textColorHint="@color/purple_500"
+            android:transitionName="username_input"
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeErrorColor="@color/purple_500"
+            app:hintTextColor="@color/purple_500">
 
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
@@ -86,7 +91,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Set Time"
-            android:textColorHint="@color/purple_500">
+            android:textColorHint="@color/purple_500"
+            android:transitionName="username_input"
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeErrorColor="@color/purple_500"
+            app:hintTextColor="@color/purple_500">
 
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText

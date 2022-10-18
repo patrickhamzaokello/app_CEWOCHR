@@ -51,13 +51,11 @@ public class ReportsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private String errorMsg;
 
-    private ReportsInterface mReportsListener;
 
 
-    public ReportsAdapter(Context context, List<Case> caseModelList, ReportsInterface mReportsListener) {
+    public ReportsAdapter(Context context, List<Case> caseModelList) {
         this.context = context;
         this.caseModelList = caseModelList;
-        this.mReportsListener = mReportsListener;
     }
 
 

@@ -21,7 +21,7 @@
         android:layout_gravity="center"
         android:transitionName="logo_image"
         app:layout_constraintTop_toBottomOf="@+id/guideline2"
-        app:srcCompat="@drawable/blackfamily4"
+        app:srcCompat="@drawable/ceworch"
 
         />
 
@@ -52,6 +52,7 @@
         android:text="Centre for Women and Children's Reintegration "
         android:textAlignment="center"
         android:textColor="@color/purple_500"
+        android:layout_marginHorizontal="30dp"
         android:textSize="18sp"
         android:transitionName="logo_desc"
         app:layout_constraintBottom_toBottomOf="parent"

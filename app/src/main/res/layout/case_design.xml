@@ -16,11 +16,23 @@
         >
 
 
+        <ImageView
+            android:id="@+id/imageViewStatus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_success" />
+
+
         <LinearLayout
             android:id="@+id/carddetailscard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_toStartOf="@id/imageViewStatus"
+            android:layout_marginEnd="10dp"
             android:orientation="vertical"
 
             >
@@ -35,24 +47,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:fontFamily="@font/roboto_bold"
+                    android:fontFamily="@font/roboto_medium"
                     android:text="Missing Child"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
 
                 <TextView
                     android:id="@+id/child_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:includeFontPadding="false"
                     android:textSize="18sp"
                     android:text="Brief Description"
-                    android:textColor="@color/black" />
+                    android:textColor="#777777" />
 
             </LinearLayout>
 
@@ -72,12 +83,6 @@
 
 
 
-            <ImageView
-                android:id="@+id/imageViewStatus"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:background="@drawable/ic_success" />
 
 
             <TextView
@@ -85,12 +90,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
-                android:background="#FFEB3B"
+                android:background="#E3D2FF"
                 android:fontFamily="@font/roboto_regular"
                 android:includeFontPadding="false"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="5dp"
-                android:layout_marginHorizontal="10dp"
+                android:paddingHorizontal="2dp"
+                android:paddingVertical="2dp"
+
                 android:text="Child"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -106,11 +111,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
-                android:background="#009688"
+                android:background="#6C3FB5"
                 android:fontFamily="@font/roboto_regular"
                 android:includeFontPadding="false"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="5dp"
+                android:paddingHorizontal="2dp"
+                android:paddingVertical="2dp"
                 android:text="Child"
                 android:maxLines="1"
                 android:ellipsize="end"

@@ -16,9 +16,10 @@
         android:id="@+id/full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
+        android:layout_above="@+id/email_text"
         android:fontFamily="@font/roboto_bold"
         android:includeFontPadding="false"
         android:text="Patrick Hamza"
@@ -29,13 +30,13 @@
         android:id="@+id/email_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/full_name"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
-        android:layout_centerHorizontal="true"
         android:includeFontPadding="false"
         android:text="Pkasemer"
         android:textColor="@color/purple_200"
+        android:layout_above="@+id/buttonLogout"
         android:textSize="14sp" />
 
 

@@ -376,7 +376,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="Call +256 787250196"
+                android:text="Call +256-7772616448 / Email us: info@cewochr.org"
                 android:textColor="@color/purple_200"
                 android:textSize="17sp" />
 

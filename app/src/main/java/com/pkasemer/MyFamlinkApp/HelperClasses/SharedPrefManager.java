@@ -16,7 +16,7 @@ import com.pkasemer.MyFamlinkApp.Models.UserModel;
 public class SharedPrefManager {
 
     //the constants
-    private static final String SHARED_PREF_NAME = "simplifiedcodingsharedpref";
+    private static final String SHARED_PREF_NAME = "cewochr_shared_pref";
     private static final String KEY_FULLNAME = "keyfullname";
     private static final String KEY_EMAIL = "keyemail";
     private static final String KEY_PHONE = "keyphone";

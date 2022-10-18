@@ -31,7 +31,7 @@ import java.util.Locale;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class  AllReports extends AppCompatActivity implements ReportsInterface {
+public class  AllReports extends AppCompatActivity {
 
     private DatabaseHelper db;
     List<Case> caseList;
@@ -39,10 +39,6 @@ public class  AllReports extends AppCompatActivity implements ReportsInterface {
     ReportsAdapter reportsAdapter;
     RecyclerView recyclerView;
 
-    TextView grandtotalvalue;
-    LinearLayout procceed_checkout_layout;
-
-    Button btnCheckout,btnDeleteAll;
     ActionBar actionBar;
 
     //a broadcast to know weather the data is synced or not
@@ -57,56 +53,21 @@ public class  AllReports extends AppCompatActivity implements ReportsInterface {
         actionBar = getSupportActionBar(); // or getActionBar();
         actionBar.setTitle("All Reports");
         // add back arrow to toolbar
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
 
         progressBar = findViewById(R.id.reports_main_progress);
-        grandtotalvalue = findViewById(R.id.grandtotalvalue);
         recyclerView = findViewById(R.id.reports_main_recycler);
-        procceed_checkout_layout = findViewById(R.id.procceed_checkout_layout);
-        btnCheckout = findViewById(R.id.btnCheckout);
-        btnDeleteAll = findViewById(R.id.btnDeleteAll);
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
         db = new DatabaseHelper(this);
         caseList = new ArrayList<>();
-
-        btnCheckout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                refreshList();
-            }
-        });
-
-        btnDeleteAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                new SweetAlertDialog(AllReports.this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Clear Database")
-                        .setContentText("All Information will be lost")
-                        .setConfirmText("OK")
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                db.clearReports();
-                                reportsAdapter.notifyDataSetChanged();
-                                sDialog.dismissWithAnimation();
-                                Intent i = new Intent(AllReports.this, RootActivity.class);
-                                startActivity(i);
-                            }
-                        }).show();
-            }
-        });
-
 
 
         registerReceiver(new NetworkStateChecker(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
@@ -130,17 +91,15 @@ public class  AllReports extends AppCompatActivity implements ReportsInterface {
     }
 
 
-
     private void loadReports() {
         caseList.clear();
         caseList = db.list_DB_Cases();
         if (caseList.size() > 0) {
             progressBar.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
-            reportsAdapter = new ReportsAdapter(this, caseList, this);
+            reportsAdapter = new ReportsAdapter(this, caseList);
             recyclerView.setAdapter(reportsAdapter);
             reportsAdapter.notifyDataSetChanged();
-            grandtotalvalue();
         } else {
             recyclerView.setVisibility(View.GONE);
             emptycartwarning();
@@ -149,10 +108,24 @@ public class  AllReports extends AppCompatActivity implements ReportsInterface {
 
     }
 
+    private void emptycartwarning() {
+        new SweetAlertDialog(AllReports.this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("No Record Existing")
+                .setContentText("Create a new Record")
+                .setConfirmText("OK")
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.dismissWithAnimation();
+                        Intent i = new Intent(AllReports.this, RootActivity.class);
+                        startActivity(i);
+                    }
+                }).show();
+    }
+
     private void refreshList() {
         reportsAdapter.notifyDataSetChanged();
     }
-
 
 
     @Override
@@ -161,73 +134,6 @@ public class  AllReports extends AppCompatActivity implements ReportsInterface {
         return true;
     }
 
-    @Override
-    public void deletemenuitem(String childid, Case foodDBModel) {
-        new SweetAlertDialog(getApplicationContext(), SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Are you sure?")
-                .setContentText("Item will be Removed From Cart")
-                .setCancelText("No")
-                .setConfirmText("Yes,delete it!")
-                .showCancelButton(true)
-                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.cancel();
-                        return;
-                    }
-                })
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog
-                                .setTitleText("Deleted!")
-                                .setContentText("Item has been Removed From Cart")
-                                .setConfirmText("OK")
-                                .showCancelButton(false)
-                                .setConfirmClickListener(null)
-                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-
-                        db.deleteReport(childid);
-                        grandtotalvalue();
-                        updatecartCount();
-                        reportsAdapter.remove(foodDBModel);
-                    }
-                })
-                .show();
-    }
-
-    public void grandtotalvalue() {
-        grandtotalvalue.setText("" + NumberFormat.getNumberInstance(Locale.US).format(db.countRecords()));
-
-        if (db.countRecords() == 0) {
-            emptycartwarning();
-        }
-    }
-
-    private void updatecartCount() {
-        String mycartcount = String.valueOf(db.countRecords());
-        Intent intent = new Intent(getApplicationContext().getResources().getString(R.string.cartcoutAction));
-        intent.putExtra(getApplication().getResources().getString(R.string.cartCount), mycartcount);
-        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
-    }
 
 
-    private void emptycartwarning() {
-        procceed_checkout_layout.setVisibility(View.GONE);
-        progressBar.setVisibility(View.GONE);
-        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("No Records Found")
-                .setContentText("Add Reports and Come Back")
-                .setConfirmText("OK")
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-
-                        sDialog.dismissWithAnimation();
-
-                        Intent i = new Intent(AllReports.this, RootActivity.class);
-                        startActivity(i);
-                    }
-                }).show();
-    }
 }
